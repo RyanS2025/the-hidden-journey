@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hidden Journey — Where Your Girl Scout Stuff Really Comes From</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #1B4332;
+  --forest-mid: #2D6A4F;
+  --forest-light: #40916C;
+  --sage: #95D5B2;
+  --sage-pale: #D8F3DC;
+  --cream: #FDF8F0;
+  --warm: #F5EBE0;
+  --cocoa: #3E2723;
+  --cocoa-light: #6D4C41;
+  --gold: #C9A227;
+  --gold-pale: #F5ECC8;
+  --coral: #D4553A;
+  --coral-pale: #FADBD8;
+  --sky: #2980B9;
+  --sky-pale: #D6EAF8;
+  --charcoal: #1C1C1C;
+  --text: #2C2C2C;
+  --text-mid: #5A5A5A;
+  --text-light: #8A8A8A;
+  --border: rgba(0,0,0,0.08);
+  --radius: 16px;
+  --radius-sm: 8px;
+  --radius-pill: 100px;
+}
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+@keyframes slideRight { from { width: 0; } to { width: var(--w); } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  color: var(--text);
+  background: var(--cream);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 100;
+  background: rgba(253,248,240,0.88); backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 3rem;
+}
+.nav-brand {
+  font-family: 'Playfair Display', serif; font-size: 1.4rem;
+  color: var(--forest); text-decoration: none; font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.nav-brand em { font-style: italic; color: var(--forest-light); font-weight: 400; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--text-mid); font-size: 0.85rem;
+  font-weight: 500; letter-spacing: 0.02em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: var(--forest); }
+.nav-badge {
+  background: var(--gold); color: white; font-size: 0.65rem; font-weight: 700;
+  padding: 0.35rem 0.9rem; border-radius: var(--radius-pill);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  justify-content: center; align-items: center; text-align: center;
+  padding: 8rem 2rem 4rem; position: relative;
+  background: linear-gradient(175deg, var(--cream) 0%, var(--warm) 40%, var(--sage-pale) 100%);
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231B4332' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-eyebrow {
+  font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.18em; color: var(--forest-light);
+  margin-bottom: 1.5rem; position: relative;
+  animation: fadeUp 0.8s ease both;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 6vw, 5rem);
+  color: var(--forest); line-height: 1.1; max-width: 800px;
+  letter-spacing: -0.03em; margin-bottom: 1.5rem; position: relative;
+  animation: fadeUp 0.8s ease 0.15s both;
+}
+.hero h1 em { font-style: italic; color: var(--cocoa-light); }
+.hero-sub {
+  font-size: 1.15rem; color: var(--text-mid); max-width: 540px;
+  font-weight: 300; line-height: 1.7; position: relative;
+  animation: fadeUp 0.8s ease 0.3s both;
+}
+.hero-stats {
+  display: flex; gap: 3rem; margin-top: 3rem; position: relative;
+  animation: fadeUp 0.8s ease 0.45s both;
+}
+.hero-stat-num {
+  font-family: 'Playfair Display', serif; font-size: 2.4rem;
+  color: var(--forest); font-weight: 700; line-height: 1;
+}
+.hero-stat-label {
+  font-size: 0.75rem; color: var(--text-light); text-transform: uppercase;
+  letter-spacing: 0.08em; font-weight: 500; margin-top: 0.3rem;
+}
+.hero-ctas {
+  display: flex; gap: 1rem; margin-top: 2.5rem; position: relative;
+  animation: fadeUp 0.8s ease 0.6s both;
+}
+.btn-primary {
+  background: var(--forest); color: white; border: none;
+  padding: 0.9rem 2rem; border-radius: var(--radius-pill);
+  font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 600;
+  cursor: pointer; transition: all 0.3s; letter-spacing: 0.02em;
+}
+.btn-primary:hover { background: var(--forest-mid); transform: translateY(-2px); }
+.btn-secondary {
+  background: transparent; color: var(--forest); border: 1.5px solid var(--forest);
+  padding: 0.9rem 2rem; border-radius: var(--radius-pill);
+  font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 600;
+  cursor: pointer; transition: all 0.3s; letter-spacing: 0.02em;
+}
+.btn-secondary:hover { background: var(--forest); color: white; }
+
+/* ===== TICKER ===== */
+.ticker {
+  background: var(--forest); color: var(--sage); padding: 0.7rem 0;
+  overflow: hidden; white-space: nowrap; font-size: 0.75rem;
+  font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.ticker-inner { display: inline-block; animation: marquee 30s linear infinite; }
+.ticker span { margin-right: 3rem; }
+
+/* ===== SECTION HEADERS ===== */
+.section { padding: 6rem 3rem; max-width: 1200px; margin: 0 auto; }
+.section-eyebrow {
+  font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.18em; color: var(--coral); margin-bottom: 0.8rem;
+}
+.section-title {
+  font-family: 'Playfair Display', serif; font-size: 2.4rem;
+  color: var(--forest); line-height: 1.15; max-width: 600px;
+  letter-spacing: -0.02em; margin-bottom: 1rem;
+}
+.section-desc {
+  font-size: 1rem; color: var(--text-mid); max-width: 520px;
+  font-weight: 300; line-height: 1.7; margin-bottom: 3rem;
+}
+
+/* ===== SUBSECTION HEADERS ===== */
+.subsection-label {
+  font-family: 'Playfair Display', serif; font-size: 1.2rem;
+  color: var(--cocoa); margin-bottom: 1rem; padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--sage); display: inline-block;
+}
+.subsection-desc {
+  font-size: 0.85rem; color: var(--text-mid); margin-bottom: 1.5rem;
+  line-height: 1.6; max-width: 600px;
+}
+
+/* ===== PRODUCT CARDS ===== */
+.products-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem;
+}
+.products-grid.cookies-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+.product-card {
+  background: white; border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--border); transition: all 0.4s;
+  cursor: pointer; position: relative;
+}
+.product-card:hover { transform: translateY(-5px); border-color: var(--sage); box-shadow: 0 12px 32px rgba(27,67,50,0.1); }
+.card-img {
+  height: 120px; display: flex; align-items: center; justify-content: center;
+  font-size: 3rem; position: relative; overflow: hidden;
+}
+.card-img.thin-mints { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); }
+.card-img.samoas { background: linear-gradient(135deg, #EFEBE9, #D7CCC8); }
+.card-img.tagalongs { background: linear-gradient(135deg, #FFF8E1, #FFE0B2); }
+.card-img.dosidos { background: linear-gradient(135deg, #FBE9E7, #FFCCBC); }
+.card-img.trefoils { background: linear-gradient(135deg, #FFFDE7, #FFF9C4); }
+.card-img.lemonups { background: linear-gradient(135deg, #FFF9C4, #FFF176); }
+.card-img.adventurefuls { background: linear-gradient(135deg, #3E2723, #5D4037); }
+.card-img.adventurefuls span { filter: none; }
+.card-img.exploremores { background: linear-gradient(135deg, #4E342E, #6D4C41); }
+.card-img.toffeetastic { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); }
+.card-img.caramelchoc { background: linear-gradient(135deg, #EFEBE9, #BCAAA4); }
+.card-img.vest { background: linear-gradient(135deg, var(--sage-pale), #B2DFDB); }
+.card-img.box { background: linear-gradient(135deg, #FBE9E7, #FFCCBC); }
+.card-tag {
+  position: absolute; top: 8px; right: 8px;
+  font-size: 0.55rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.06em; padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-pill); background: rgba(255,255,255,0.9);
+  color: var(--forest);
+}
+.card-tag.new { background: var(--coral); color: white; }
+.card-tag.vegan { background: var(--forest); color: white; }
+.card-tag.gf { background: var(--gold); color: white; }
+.card-body { padding: 1rem; }
+.card-name { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.15rem; }
+.card-altname { font-size: 0.7rem; color: var(--forest-light); font-style: italic; margin-bottom: 0.3rem; }
+.card-subtitle { font-size: 0.75rem; color: var(--text-light); margin-bottom: 0.8rem; line-height: 1.4; }
+.card-ingredients {
+  display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.6rem;
+}
+.ingredient-pill {
+  font-size: 0.6rem; padding: 0.15rem 0.5rem; border-radius: var(--radius-pill);
+  background: var(--warm); color: var(--cocoa-light); font-weight: 500;
+}
+.ingredient-pill.highlight { background: var(--coral-pale); color: var(--coral); }
+.card-meta { display: flex; gap: 0.8rem; }
+.card-meta-item { display: flex; flex-direction: column; }
+.card-meta-val { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: var(--forest); }
+.card-meta-label { font-size: 0.6rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ===== JOURNEY DETAIL ===== */
+.journey-section {
+  padding: 6rem 3rem; max-width: 1200px; margin: 0 auto;
+}
+.journey-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.journey-left { position: sticky; top: 100px; }
+.journey-emoji { font-size: 5rem; margin-bottom: 1rem; }
+.journey-product-name {
+  font-family: 'Playfair Display', serif; font-size: 2.2rem;
+  color: var(--forest); margin-bottom: 0.5rem;
+}
+.journey-product-sub { font-size: 0.95rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 2rem; }
+.journey-summary {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 2rem;
+}
+.journey-summary-card {
+  background: var(--sage-pale); border-radius: var(--radius-sm); padding: 1rem;
+  text-align: center;
+}
+.journey-summary-num { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--forest); }
+.journey-summary-lbl { font-size: 0.7rem; color: var(--forest-mid); text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* Carbon bar */
+.carbon-bar-container { margin-top: 1.5rem; }
+.carbon-bar-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; }
+.carbon-bar-title { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-mid); }
+.carbon-bar-total { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--coral); }
+.carbon-track { height: 12px; background: var(--warm); border-radius: 6px; overflow: hidden; display: flex; }
+.carbon-segment { height: 100%; transition: width 1s ease; }
+.carbon-legend { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 0.6rem; }
+.carbon-legend-item { display: flex; align-items: center; gap: 0.3rem; font-size: 0.65rem; color: var(--text-light); }
+.carbon-legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+/* Timeline steps */
+.timeline { position: relative; }
+.timeline::before {
+  content: ''; position: absolute; left: 15px; top: 0; bottom: 0;
+  width: 2px; background: var(--sage);
+}
+.timeline-step {
+  position: relative; padding-left: 48px; margin-bottom: 2rem;
+}
+.timeline-dot {
+  position: absolute; left: 7px; top: 4px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--forest); border: 3px solid var(--sage-pale);
+  z-index: 1;
+}
+.step-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.3rem; }
+.step-name { font-weight: 600; font-size: 0.95rem; }
+.step-location { font-size: 0.75rem; color: var(--sky); font-weight: 500; }
+.step-desc { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; }
+.step-ethics {
+  margin-top: 0.6rem; padding: 0.6rem 0.8rem;
+  background: var(--gold-pale); border-radius: var(--radius-sm);
+  font-size: 0.78rem; color: var(--cocoa-light); line-height: 1.5;
+  border-left: 3px solid var(--gold);
+}
+.step-carbon-badge {
+  display: inline-block; margin-top: 0.5rem;
+  font-size: 0.7rem; font-weight: 600; color: var(--coral);
+  background: var(--coral-pale); padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-pill);
+}
+
+/* ===== OLIVIA CALLOUT ===== */
+.olivia-callout {
+  margin: 4rem 3rem; max-width: 1200px; margin-left: auto; margin-right: auto;
+  background: var(--forest); border-radius: var(--radius); padding: 3.5rem;
+  display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: center;
+  color: white; position: relative; overflow: hidden;
+}
+.olivia-callout::after {
+  content: '"'; position: absolute; right: 40px; top: -20px;
+  font-family: 'Playfair Display', serif; font-size: 20rem;
+  color: rgba(255,255,255,0.04); line-height: 1;
+}
+.olivia-label {
+  font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.18em; color: var(--sage); margin-bottom: 0.8rem;
+}
+.olivia-title {
+  font-family: 'Playfair Display', serif; font-size: 1.8rem;
+  line-height: 1.25; margin-bottom: 1rem; color: white;
+}
+.olivia-text { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.75); font-weight: 300; }
+.olivia-highlight {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: 1.3rem; line-height: 1.5; color: var(--sage);
+  position: relative; padding-left: 1.5rem;
+  border-left: 3px solid var(--sage);
+}
+
+/* ===== CONTRAST SECTION ===== */
+.contrast {
+  padding: 5rem 3rem; max-width: 1200px; margin: 0 auto;
+}
+.contrast-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0; align-items: stretch; }
+.contrast-card {
+  padding: 2.5rem; border-radius: var(--radius);
+}
+.contrast-card.global { background: var(--coral-pale); }
+.contrast-card.local { background: var(--sage-pale); }
+.contrast-vs {
+  display: flex; align-items: center; justify-content: center;
+  width: 60px; font-family: 'Playfair Display', serif; font-size: 1.2rem;
+  color: var(--text-light); font-style: italic;
+}
+.contrast-emoji { font-size: 2.5rem; margin-bottom: 1rem; }
+.contrast-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--text); margin-bottom: 0.3rem; }
+.contrast-subtitle { font-size: 0.8rem; color: var(--text-mid); margin-bottom: 1.5rem; }
+.contrast-stat-row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+.contrast-stat-row:last-child { border-bottom: none; }
+.contrast-stat-label { font-size: 0.8rem; color: var(--text-mid); }
+.contrast-stat-val { font-weight: 600; font-size: 0.85rem; }
+
+/* ===== SEARCH SECTION ===== */
+.search-section {
+  padding: 6rem 3rem; background: var(--forest); text-align: center;
+}
+.search-inner { max-width: 700px; margin: 0 auto; }
+.search-section .section-eyebrow { color: var(--sage); }
+.search-section .section-title { color: white; margin: 0 auto 0.5rem; }
+.search-section .section-desc { color: rgba(255,255,255,0.6); margin: 0 auto 2rem; }
+.search-box {
+  display: flex; background: white; border-radius: var(--radius);
+  overflow: hidden; max-width: 500px; margin: 0 auto;
+}
+.search-box input {
+  flex: 1; border: none; padding: 1rem 1.5rem; font-family: 'Outfit', sans-serif;
+  font-size: 1rem; outline: none; color: var(--text);
+}
+.search-box button {
+  background: var(--coral); color: white; border: none;
+  padding: 1rem 1.5rem; font-family: 'Outfit', sans-serif;
+  font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: background 0.2s;
+}
+.search-box button:hover { background: #c0392b; }
+.search-suggestions {
+  margin-top: 1.2rem; display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap;
+}
+.search-chip {
+  background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius-pill);
+  padding: 0.4rem 1rem; font-size: 0.78rem; cursor: pointer; transition: all 0.2s;
+}
+.search-chip:hover { background: rgba(255,255,255,0.2); color: white; }
+
+/* ===== IMPACT ===== */
+.impact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+.impact-card {
+  background: white; border-radius: var(--radius); padding: 2rem 1.5rem;
+  border: 1px solid var(--border); text-align: center;
+  transition: transform 0.3s;
+}
+.impact-card:hover { transform: translateY(-4px); }
+.impact-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+.impact-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.4rem; }
+.impact-text { font-size: 0.8rem; color: var(--text-mid); line-height: 1.6; }
+
+/* ===== SOURCES ===== */
+.sources-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.source-card {
+  background: white; border-radius: var(--radius-sm); padding: 1.2rem;
+  border: 1px solid var(--border); transition: border-color 0.2s;
+}
+.source-card:hover { border-color: var(--sage); }
+.source-name { font-weight: 600; font-size: 0.85rem; margin-bottom: 0.2rem; }
+.source-desc { font-size: 0.75rem; color: var(--text-light); line-height: 1.5; }
+.source-badge { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 0.15rem 0.5rem; border-radius: var(--radius-pill);
+  background: var(--sage-pale); color: var(--forest); margin-top: 0.5rem; display: inline-block;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--charcoal); color: rgba(255,255,255,0.5);
+  padding: 3rem; text-align: center; font-size: 0.8rem;
+}
+footer strong { color: white; font-weight: 600; }
+footer .footer-sub { margin-top: 0.3rem; font-size: 0.7rem; }
+
+/* ===== MOBILE ===== */
+@media (max-width: 900px) {
+  nav { padding: 0.8rem 1.5rem; }
+  .nav-links { display: none; }
+  .hero { padding: 6rem 1.5rem 3rem; }
+  .hero-stats { gap: 1.5rem; }
+  .section { padding: 4rem 1.5rem; }
+  .products-grid, .products-grid.cookies-grid { grid-template-columns: 1fr 1fr; }
+  .journey-layout { grid-template-columns: 1fr; }
+  .journey-left { position: static; }
+  .olivia-callout { grid-template-columns: 1fr; padding: 2rem; margin: 3rem 1.5rem; }
+  .contrast-grid { grid-template-columns: 1fr; }
+  .contrast-vs { width: auto; padding: 0.5rem 0; }
+  .impact-grid { grid-template-columns: 1fr 1fr; }
+  .sources-grid { grid-template-columns: 1fr; }
+  .search-section { padding: 4rem 1.5rem; }
+}
+@media (max-width: 600px) {
+  .products-grid { grid-template-columns: 1fr; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .hero-stats { flex-direction: column; gap: 1rem; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">The Hidden <em>Journey</em></a>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#journey">Journey</a></li>
+    <li><a href="#explore">Explore</a></li>
+    <li><a href="#impact">Why It Matters</a></li>
+  </ul>
+  <span class="nav-badge">Gold Award Project</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">A Girl Scout Gold Award Project</div>
+  <h1>Where does your <em>Girl Scout stuff</em> really come from?</h1>
+  <p class="hero-sub">
+    Every Thin Mint crosses 5 countries before it reaches your doorstep.
+    Every vest starts as a recycled plastic bottle in North Carolina.
+    This is the story your cookie box doesn't tell you.
+  </p>
+  <div class="hero-stats">
+    <div>
+      <div class="hero-stat-num">5+</div>
+      <div class="hero-stat-label">Countries per cookie</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">12,000</div>
+      <div class="hero-stat-label">Miles traveled</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">200M</div>
+      <div class="hero-stat-label">Boxes sold per year</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">$800M</div>
+      <div class="hero-stat-label">Annual revenue</div>
+    </div>
+  </div>
+  <div class="hero-ctas">
+    <button class="btn-primary">Trace a Thin Mint</button>
+    <button class="btn-secondary">Search any product</button>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>Palm oil from Indonesia</span>
+    <span>Cocoa from Côte d'Ivoire</span>
+    <span>Recycled bottles from North Carolina</span>
+    <span>Coconut from the Philippines</span>
+    <span>Wheat from the U.S. Midwest</span>
+    <span>Baked in Kentucky &amp; South Dakota</span>
+    <span>Neither bakery is American-owned</span>
+    <span>Ferrero (Italy) &bull; Weston Foods (Canada)</span>
+    <span>Palm oil from Indonesia</span>
+    <span>Cocoa from Côte d'Ivoire</span>
+    <span>Recycled bottles from North Carolina</span>
+    <span>Coconut from the Philippines</span>
+    <span>Wheat from the U.S. Midwest</span>
+    <span>Baked in Kentucky &amp; South Dakota</span>
+    <span>Neither bakery is American-owned</span>
+    <span>Ferrero (Italy) &bull; Weston Foods (Canada)</span>
+  </div>
+</div>
+
+<!-- PRODUCT CARDS -->
+<section class="section" id="products">
+  <div class="section-eyebrow">Girl Scout Products</div>
+  <div class="section-title">Every product. Every supply chain. Every story.</div>
+  <div class="section-desc">Click any product to trace its journey from raw ingredients to your neighborhood. All 9 cookie flavors share a core global supply chain — but each has unique twists.</div>
+
+  <div class="subsection-label">The 2026 Cookie Lineup</div>
+  <div class="subsection-desc">All cookies use RSPO Mass Balance palm oil (Indonesia/Malaysia), cocoa (West Africa), and domestic wheat, sugar, and soy. Baked by Little Brownie Bakers (Ferrero, Italy) or ABC Bakers (Weston Foods, Canada).</div>
+
+  <div class="products-grid cookies-grid">
+    <div class="product-card">
+      <div class="card-img thin-mints">
+        <span class="card-tag vegan">Vegan</span>
+        🍪
+      </div>
+      <div class="card-body">
+        <div class="card-name">Thin Mints</div>
+        <div class="card-subtitle">Crisp wafers in chocolaty coating with peppermint oil. The #1 seller.</div>
+        <div class="card-ingredients">
+          <span class="ingredient-pill highlight">Palm oil</span>
+          <span class="ingredient-pill">Cocoa</span>
+          <span class="ingredient-pill">Peppermint oil</span>
+          <span class="ingredient-pill">Wheat</span>
+        </div>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-val">5</div><div class="card-meta-label">Countries</div></div>
+          <div class="card-meta-item"><div class="card-meta-val">4.5 kg</div><div class="card-meta-label">CO₂</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-img samoas">
+        <span class="card-tag">6 countries</span>
+        🥥
+      </div>
+      <div class="card-body">
+        <div class="card-name">Samoas</div>
+        <div class="card-altname">Also called: Caramel deLites</div>
+        <div class="card-subtitle">Caramel, toasted coconut, dark chocolate on a shortbread base.</div>
+        <div class="card-ingredients">
+          <span class="ingredient-pill highlight">Palm oil</span>
+          <span class="ingredient-pill highlight">Coconut (Philippines)</span>
+          <span class="ingredient-pill">Cocoa</span>
+          <span class="ingredient-pill">Caramel</span>
+        </div>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-val">6</div><div class="card-meta-label">Countries</div></div>
+          <div class="card-meta-item"><div class="card-meta-val">5.0 kg</div><div class="card-meta-label">CO₂</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-img tagalongs">
+        <span class="card-tag">5 countries</span>
+        🥜
+      </div>
+      <div class="card-body">
+        <div class="card-name">Tagalongs</div>
+        <div class="card-altname">Also called: Peanut Butter Patties</div>
+        <div class="card-subtitle">Crispy cookie layered with peanut butter, covered in chocolate.</div>
+        <div class="card-ingredients">
+          <span class="ingredient-pill highlight">Palm oil</span>
+          <span class="ingredient-pill">Peanut butter</span>
+          <span class="ingredient-pill">Cocoa</span>
+        </div>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-val">5</div><div class="card-meta-label">Countries</div></div>
+          <div class="card-meta-item"><div class="card-meta-val">4.3 kg</div><div class="card-meta-label">CO₂</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-img dosidos">
+        <span class="card-tag">5 countries</span>
+        🫘
+      </div>
+      <div class="card-body">
+        <div class="card-name">Do-si-dos</div>
+        <div class="card-altname">Also called: Peanut Butter Sandwich</div>
+        <div class="card-subtitle">Crunchy oatmeal sandwich cookies with peanut butter filling.</div>
+        <div class="card-ingredients">
+          <span class="ingredient-pill highlight">Palm oil</span>
+          <span class="ingredient-pill">Oats</span>
+          <span class="ingredient-pill">Peanut butter</span>
+        </div>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-val">5</div><div class="card-meta-label">Countries</div></div>
+          <div class="card-meta-item"><div class="card-meta-val">3.8 kg</div><div class="card-meta-label">CO₂</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-img trefoils">
+        <span class="card-tag">Classic</span>
+        🍪
+      </div>
+      <div class="card-body">
+        <div class="card-name">Trefoils</div>
+        <div class="card-subtitle">Delicate shortbread inspired by the original 1930s Girl Scout recipe.</div>
+        <div class="card-ingredients">
+          <span class="ingredient-pill highlight">Palm oil</span>
+          <span class="ingredient-pill">Wheat</span>
+          <span class="ingredient-pill">Butter flavor</span>
+        </div>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-val">5</div><div class="card-meta-label">Countries</div></div>
+          <div class="card-meta-item"><div class="card-meta-val">3.2 kg</div><div class="card-meta-label">CO₂</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-img lemonups">
+        <span class="card-tag vegan">Vegan</span>
+        🍋
+      </div>
+      <div class="card-body">
+        <div class="card-name">Lemon-Ups</div>
+        <div class="card-altname">Also called: Lemonades</div>
+        <div class="card-subtitle">Crispy lemon cookies baked with inspiring messages.</div>
+        <div class="card-ingredients">
+          <span class="ingredient-pill highlight">Palm oil</span>
+          <span class="ingredient-pill">Lemon flavor</span>
+          <span class="ingredient-pill">Wheat</span>
+        </div>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-val">5</div><div class="card-meta-label">Countries</div></div>
+          <div class="card-meta-item"><div class="card-meta-val">3.0 kg</div><div class="card-meta-label">CO₂</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-img adventurefuls">
+        <span class="card-tag">5 countries</span>
+        🧁
+      </div>
+      <div class="card-body">
+        <div class="card-name">Adventurefuls</div>
+        <div class="card-subtitle">Brownie-inspired cookies with caramel crème and sea salt.</div>
+        <div class="card-ingredients">
+          <span class="ingredient-pill highlight">Palm kernel oil</span>
+          <span class="ingredient-pill">Cocoa</span>
+          <span class="ingredient-pill">Caramel</span>
+          <span class="ingredient-pill">Sea salt</span>
+        </div>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-val">5</div><div class="card-meta-label">Countries</div></div>
+          <div class="card-meta-item"><div class="card-meta-val">4.2 kg</div><div class="card-meta-label">CO₂</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-img exploremores">
+        <span class="card-tag new">New 2026</span>
+        🍫
+      </div>
+      <div class="card-body">
+        <div class="card-name">Exploremores</div>
+        <div class="card-subtitle">Rocky Road-inspired sandwich with chocolate, marshmallow, and almond crème.</div>
+        <div class="card-ingredients">
+          <span class="ingredient-pill highlight">Palm oil</span>
+          <span class="ingredient-pill">Cocoa</span>
+          <span class="ingredient-pill">Almond flavor</span>
+          <span class="ingredient-pill">Marshmallow</span>
+        </div>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-val">5</div><div class="card-meta-label">Countries</div></div>
+          <div class="card-meta-item"><div class="card-meta-val">4.4 kg</div><div class="card-meta-label">CO₂</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-img toffeetastic">
+        <span class="card-tag gf">Gluten-free</span>
+        🍬
+      </div>
+      <div class="card-body">
+        <div class="card-name">Toffee-tastic</div>
+        <div class="card-subtitle">Rich buttery cookies with sweet crunchy toffee bits. Gluten-free.</div>
+        <div class="card-ingredients">
+          <span class="ingredient-pill highlight">Palm oil</span>
+          <span class="ingredient-pill">Rice flour</span>
+          <span class="ingredient-pill">Toffee</span>
+          <span class="ingredient-pill">Butter</span>
+        </div>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-val">5</div><div class="card-meta-label">Countries</div></div>
+          <div class="card-meta-item"><div class="card-meta-val">3.5 kg</div><div class="card-meta-label">CO₂</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-img caramelchoc">
+        <span class="card-tag gf">Gluten-free</span>
+        🍫
+      </div>
+      <div class="card-body">
+        <div class="card-name">Caramel Chocolate Chip</div>
+        <div class="card-subtitle">Chewy oat-flour cookies with caramel and semisweet chocolate chips.</div>
+        <div class="card-ingredients">
+          <span class="ingredient-pill">Oat flour</span>
+          <span class="ingredient-pill">Canola oil</span>
+          <span class="ingredient-pill">Coconut oil</span>
+          <span class="ingredient-pill">Chocolate</span>
+        </div>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-val">4</div><div class="card-meta-label">Countries</div></div>
+          <div class="card-meta-item"><div class="card-meta-val">3.1 kg</div><div class="card-meta-label">CO₂</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--gold-pale);border-radius:var(--radius-sm);border-left:3px solid var(--gold);font-size:0.8rem;color:var(--cocoa-light);line-height:1.6;">
+    <strong>What every cookie has in common:</strong> All 9 flavors contain palm oil sourced from Indonesia and Malaysia. All use RSPO "Mass Balance" certification — meaning sustainable oil is mixed with conventional, not fully segregated. All are kosher and halal certified. None use high-fructose corn syrup. All contain GMOs.
+  </div>
+
+  <div style="margin-top:3rem;">
+    <div class="subsection-label">Beyond the Cookies</div>
+    <div class="subsection-desc">The vest and box tell a different story — shorter supply chains, domestic manufacturing, and genuine sustainability wins.</div>
+
+    <div class="products-grid" style="grid-template-columns: 1fr 1fr;">
+      <div class="product-card">
+        <div class="card-img vest">
+          <span class="card-tag">Made in USA</span>
+          🦺
+        </div>
+        <div class="card-body">
+          <div class="card-name">Girl Scout Vest</div>
+          <div class="card-subtitle">40% Repreve recycled polyester from plastic bottles. Made entirely in the USA with traceable fiber.</div>
+          <div class="card-ingredients">
+            <span class="ingredient-pill" style="background:var(--sage-pale);color:var(--forest);">Recycled bottles</span>
+            <span class="ingredient-pill" style="background:var(--sage-pale);color:var(--forest);">Repreve fiber</span>
+            <span class="ingredient-pill">Cotton</span>
+          </div>
+          <div class="card-meta">
+            <div class="card-meta-item"><div class="card-meta-val">1</div><div class="card-meta-label">Country</div></div>
+            <div class="card-meta-item"><div class="card-meta-val">800 mi</div><div class="card-meta-label">Distance</div></div>
+            <div class="card-meta-item"><div class="card-meta-val">2.8 kg</div><div class="card-meta-label">CO₂</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="card-img box">
+          <span class="card-tag">100% recycled</span>
+          📦
+        </div>
+        <div class="card-body">
+          <div class="card-name">Cookie Box</div>
+          <div class="card-subtitle">100% recycled paperboard — no BPA, no PFAS. But the shift to plastic film packs is complicated.</div>
+          <div class="card-ingredients">
+            <span class="ingredient-pill" style="background:var(--sage-pale);color:var(--forest);">Recycled paper</span>
+            <span class="ingredient-pill" style="background:var(--sage-pale);color:var(--forest);">FSC certified</span>
+            <span class="ingredient-pill highlight">PS #6 tray</span>
+          </div>
+          <div class="card-meta">
+            <div class="card-meta-item"><div class="card-meta-val">1</div><div class="card-meta-label">Country</div></div>
+            <div class="card-meta-item"><div class="card-meta-val">500 mi</div><div class="card-meta-label">Distance</div></div>
+            <div class="card-meta-item"><div class="card-meta-val">0.7 kg</div><div class="card-meta-label">CO₂</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY DETAIL (Thin Mints expanded) -->
+<section class="journey-section" id="journey">
+  <div class="journey-layout">
+    <div class="journey-left">
+      <div class="journey-emoji">🍪</div>
+      <div class="journey-product-name">Journey of a Thin Mint</div>
+      <div class="journey-product-sub">
+        From palm oil plantations in Indonesia to your neighbor's doorstep —
+        every box crosses oceans, touches 5 countries, and carries a story
+        about child labor, deforestation, and one Girl Scout who said "enough."
+      </div>
+      <div class="journey-summary">
+        <div class="journey-summary-card">
+          <div class="journey-summary-num">5</div>
+          <div class="journey-summary-lbl">Countries</div>
+        </div>
+        <div class="journey-summary-card">
+          <div class="journey-summary-num">12K</div>
+          <div class="journey-summary-lbl">Miles</div>
+        </div>
+        <div class="journey-summary-card">
+          <div class="journey-summary-num">4.5</div>
+          <div class="journey-summary-lbl">kg CO₂</div>
+        </div>
+      </div>
+
+      <!-- Carbon breakdown bar -->
+      <div class="carbon-bar-container">
+        <div class="carbon-bar-header">
+          <span class="carbon-bar-title">Carbon footprint breakdown</span>
+          <span class="carbon-bar-total">4.5 kg CO₂</span>
+        </div>
+        <div class="carbon-track">
+          <div class="carbon-segment" style="width:40%;background:#D4553A;"></div>
+          <div class="carbon-segment" style="width:20%;background:#C9A227;"></div>
+          <div class="carbon-segment" style="width:9%;background:#40916C;"></div>
+          <div class="carbon-segment" style="width:13%;background:#6D4C41;"></div>
+          <div class="carbon-segment" style="width:7%;background:#8A8A8A;"></div>
+          <div class="carbon-segment" style="width:11%;background:#2980B9;"></div>
+        </div>
+        <div class="carbon-legend">
+          <div class="carbon-legend-item"><div class="carbon-legend-dot" style="background:#D4553A;"></div>Palm oil</div>
+          <div class="carbon-legend-item"><div class="carbon-legend-dot" style="background:#C9A227;"></div>Cocoa</div>
+          <div class="carbon-legend-item"><div class="carbon-legend-dot" style="background:#40916C;"></div>Grains</div>
+          <div class="carbon-legend-item"><div class="carbon-legend-dot" style="background:#6D4C41;"></div>Baking</div>
+          <div class="carbon-legend-item"><div class="carbon-legend-dot" style="background:#8A8A8A;"></div>Packaging</div>
+          <div class="carbon-legend-item"><div class="carbon-legend-dot" style="background:#2980B9;"></div>Shipping</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline">
+      <div class="timeline-step">
+        <div class="timeline-dot"></div>
+        <div class="step-header">
+          <span class="step-name">1. Palm oil farming</span>
+          <span class="step-location">Indonesia & Malaysia</span>
+        </div>
+        <div class="step-desc">85% of global palm oil comes from plantations in Southeast Asia. Girl Scout Cookies use RSPO Mass Balance certified oil — sustainable blended with conventional sources, not fully traceable.</div>
+        <div class="step-ethics">An AP investigation linked palm oil supplying cookie bakers to child labor. A 10-year-old named Ima was pulled from school to work 12-hour days on a plantation connected to the supply chain.</div>
+        <div class="step-carbon-badge">1.8 kg CO₂</div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="timeline-dot"></div>
+        <div class="step-header">
+          <span class="step-name">2. Cocoa sourcing</span>
+          <span class="step-location">Côte d'Ivoire & Ghana</span>
+        </div>
+        <div class="step-desc">Little Brownie Bakers is owned by Ferrero (Italy), which signed the Cocoa and Forest Initiative to end deforestation and support sustainable cocoa communities in West Africa.</div>
+        <div class="step-carbon-badge">0.9 kg CO₂</div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="timeline-dot"></div>
+        <div class="step-header">
+          <span class="step-name">3. Domestic ingredients</span>
+          <span class="step-location">U.S. Midwest</span>
+        </div>
+        <div class="step-desc">Wheat flour, sugar, and soybean oil sourced from American farms. Cookies contain GMOs from corn, soybeans, canola, and sugar beets.</div>
+        <div class="step-carbon-badge">0.4 kg CO₂</div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="timeline-dot"></div>
+        <div class="step-header">
+          <span class="step-name">4. Baking</span>
+          <span class="step-location">Louisville, KY or North Sioux City, SD</span>
+        </div>
+        <div class="step-desc">Two licensed bakeries: Little Brownie Bakers (owned by Italian Ferrero — yes, the Nutella company) and ABC Bakers (owned by Canadian Weston Foods). Neither is American-owned.</div>
+        <div class="step-ethics">The cookies Girl Scouts sell door-to-door are ultimately produced by an Italian and a Canadian corporation.</div>
+        <div class="step-carbon-badge">0.6 kg CO₂</div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="timeline-dot"></div>
+        <div class="step-header">
+          <span class="step-name">5. Packaging</span>
+          <span class="step-location">Various U.S. locations</span>
+        </div>
+        <div class="step-desc">Boxes are 100% recycled paperboard. No BPA or PFAS chemicals. Some varieties shifted to plastic film — less weight, less fuel, but not widely recyclable.</div>
+        <div class="step-carbon-badge">0.3 kg CO₂</div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="timeline-dot"></div>
+        <div class="step-header">
+          <span class="step-name">6. Your neighborhood</span>
+          <span class="step-location">Door-to-door or booth sales</span>
+        </div>
+        <div class="step-desc">From bakeries to 112 regional councils, then to troop leaders, then to you. Nearly 200 million boxes generate ~$800 million annually. The largest girl-led business in the world.</div>
+        <div class="step-carbon-badge">0.5 kg CO₂</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OLIVIA CALLOUT -->
+<div class="olivia-callout">
+  <div>
+    <div class="olivia-label">The story behind the story</div>
+    <div class="olivia-title">One Girl Scout read her cookie box and changed the conversation.</div>
+    <div class="olivia-text">
+      At age 11, Olivia Chaffin was a top cookie seller in Troop 543 in Jonesborough, Tennessee.
+      Then she spotted the word "mixed" next to the RSPO palm oil label on her Thin Mints box.
+      She researched what it meant, learned that sustainable oil was blended with conventional
+      sources linked to deforestation and child labor — and stopped selling.
+      <br><br>
+      Her Change.org petition gathered 23,000+ signatures. Troops nationwide boycotted cookie sales
+      in solidarity. An AP investigation later confirmed the connection between Girl Scout Cookie
+      supply chains and child labor on Indonesian palm plantations.
+    </div>
+  </div>
+  <div class="olivia-highlight">
+    "I thought Girl Scouts was supposed to be about making the world a better place.
+    But this isn't at all making the world better."
+    <br><br>
+    — Olivia Chaffin, age 14
+  </div>
+</div>
+
+<!-- CONTRAST: Cookies vs Vest -->
+<section class="contrast" id="contrast">
+  <div class="section-eyebrow">The contrast</div>
+  <div class="section-title">Not all supply chains are equal.</div>
+  <div class="section-desc" style="margin-bottom:2rem;">
+    The same organization produces two products with radically different footprints.
+    That's the lesson — it's about the choices companies make.
+  </div>
+  <div class="contrast-grid">
+    <div class="contrast-card global">
+      <div class="contrast-emoji">🍪</div>
+      <div class="contrast-title">Thin Mints</div>
+      <div class="contrast-subtitle">Global, complex, ethically fraught</div>
+      <div class="contrast-stat-row"><span class="contrast-stat-label">Countries</span><span class="contrast-stat-val">5</span></div>
+      <div class="contrast-stat-row"><span class="contrast-stat-label">Distance</span><span class="contrast-stat-val">12,000 miles</span></div>
+      <div class="contrast-stat-row"><span class="contrast-stat-label">CO₂ per unit</span><span class="contrast-stat-val" style="color:var(--coral);">4.5 kg</span></div>
+      <div class="contrast-stat-row"><span class="contrast-stat-label">Made in USA?</span><span class="contrast-stat-val">Baked here, owned abroad</span></div>
+      <div class="contrast-stat-row"><span class="contrast-stat-label">Ethical flags</span><span class="contrast-stat-val" style="color:var(--coral);">Palm oil, child labor</span></div>
+    </div>
+    <div class="contrast-vs">vs</div>
+    <div class="contrast-card local">
+      <div class="contrast-emoji">🦺</div>
+      <div class="contrast-title">Girl Scout Vest</div>
+      <div class="contrast-subtitle">Domestic, recycled, transparent</div>
+      <div class="contrast-stat-row"><span class="contrast-stat-label">Countries</span><span class="contrast-stat-val">1</span></div>
+      <div class="contrast-stat-row"><span class="contrast-stat-label">Distance</span><span class="contrast-stat-val">800 miles</span></div>
+      <div class="contrast-stat-row"><span class="contrast-stat-label">CO₂ per unit</span><span class="contrast-stat-val" style="color:var(--forest);">2.8 kg</span></div>
+      <div class="contrast-stat-row"><span class="contrast-stat-label">Made in USA?</span><span class="contrast-stat-val" style="color:var(--forest);">100% domestic</span></div>
+      <div class="contrast-stat-row"><span class="contrast-stat-label">Ethical flags</span><span class="contrast-stat-val" style="color:var(--forest);">40% recycled, traceable</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SEARCH -->
+<section class="search-section" id="explore">
+  <div class="search-inner">
+    <div class="section-eyebrow">Beyond Girl Scouts</div>
+    <div class="section-title">Search any product.</div>
+    <div class="section-desc">Type any everyday product to trace its origins and carbon footprint.</div>
+    <div class="search-box">
+      <input type="text" placeholder="Try 'iPhone' or 'banana' or 'sneakers'..." />
+      <button>Trace it</button>
+    </div>
+    <div class="search-suggestions">
+      <span class="search-chip">iPhone</span>
+      <span class="search-chip">Banana</span>
+      <span class="search-chip">Sneakers</span>
+      <span class="search-chip">T-shirt</span>
+      <span class="search-chip">Coffee</span>
+      <span class="search-chip">Chocolate</span>
+      <span class="search-chip">Pencil</span>
+      <span class="search-chip">Soccer ball</span>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="section" id="impact">
+  <div class="section-eyebrow">Why this matters</div>
+  <div class="section-title">What can you do with this knowledge?</div>
+  <div class="section-desc">Understanding supply chains is the first step toward changing them.</div>
+
+  <div class="impact-grid">
+    <div class="impact-card">
+      <div class="impact-icon">🌍</div>
+      <div class="impact-title">Environment</div>
+      <div class="impact-text">Global shipping emits 1 billion tonnes of CO₂ annually — 3% of all emissions. Where your product comes from determines its footprint.</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-icon">🤝</div>
+      <div class="impact-title">Labor rights</div>
+      <div class="impact-text">Tens of thousands of children work on palm oil plantations. Knowing the supply chain means knowing who's affected.</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-icon">🔍</div>
+      <div class="impact-title">Transparency</div>
+      <div class="impact-text">Labels like "sustainable" and "mixed" mean very different things. One word on a cookie box started a national conversation.</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-icon">💡</div>
+      <div class="impact-title">Consumer power</div>
+      <div class="impact-text">Companies change when consumers ask questions. Olivia Chaffin was 11 when she started asking. You can start now.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCES -->
+<section class="section">
+  <div class="section-eyebrow">Data sources</div>
+  <div class="section-title">All free. All verified.</div>
+  <div class="section-desc">Every fact on this site comes from publicly accessible sources — no paywalls.</div>
+
+  <div class="sources-grid">
+    <div class="source-card">
+      <div class="source-name">Open Supply Hub</div>
+      <div class="source-desc">1M+ production locations mapped worldwide. Search any brand to see factory locations.</div>
+      <div class="source-badge">Free to search</div>
+    </div>
+    <div class="source-card">
+      <div class="source-name">Freightos Emissions Calculator</div>
+      <div class="source-desc">Estimate shipping carbon footprints for ocean, air, or ground transport.</div>
+      <div class="source-badge">Free tool</div>
+    </div>
+    <div class="source-card">
+      <div class="source-name">EcoTransIT World</div>
+      <div class="source-desc">Calculate energy consumption and emissions for any global freight transport.</div>
+      <div class="source-badge">Free tool</div>
+    </div>
+    <div class="source-card">
+      <div class="source-name">EPA Supply Chain Guidance</div>
+      <div class="source-desc">Frameworks for understanding Scope 1, 2, and 3 emissions.</div>
+      <div class="source-badge">Government source</div>
+    </div>
+    <div class="source-card">
+      <div class="source-name">Company Sustainability Reports</div>
+      <div class="source-desc">Apple, Nike, Ferrero, Weston Foods — primary source supplier lists and factory locations.</div>
+      <div class="source-badge">Public reports</div>
+    </div>
+    <div class="source-card">
+      <div class="source-name">AP Palm Oil Investigation</div>
+      <div class="source-desc">Award-winning investigation linking Girl Scout Cookie supply chains to child labor.</div>
+      <div class="source-badge">Investigative journalism</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>The Hidden Journey</strong> — A Girl Scout Gold Award Project by Mia
+  <div class="footer-sub">Built with real data from free, public sources. No paywalls, no gatekeeping.</div>
+</footer>
+
+</body>
+</html>

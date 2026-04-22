@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Hidden Journey — Neon Tracker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            void: '#0a0a0f',
+            surface: '#12121a',
+            surfaceLight: '#1a1a28',
+            neonGreen: '#00ff88',
+            neonPink: '#ff3388',
+            neonBlue: '#3388ff',
+            neonYellow: '#ffcc00',
+            muted: '#5a5a7a',
+          },
+          fontFamily: {
+            mono: ['Space Mono', 'monospace'],
+            display: ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background: #0a0a0f; color: #e0e0f0; }
+
+    .glow-green { text-shadow: 0 0 20px #00ff8844, 0 0 40px #00ff8822; }
+    .glow-pink { text-shadow: 0 0 20px #ff338844, 0 0 40px #ff338822; }
+    .glow-blue { text-shadow: 0 0 20px #3388ff44, 0 0 40px #3388ff22; }
+
+    .glow-border-green { box-shadow: 0 0 15px #00ff8822, inset 0 0 15px #00ff8808; border-color: #00ff8866; }
+    .glow-border-pink { box-shadow: 0 0 15px #ff338822, inset 0 0 15px #ff338808; border-color: #ff338866; }
+
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .scan-line {
+      background: linear-gradient(180deg, transparent, #00ff8808, transparent);
+      height: 100px;
+      position: absolute;
+      width: 100%;
+      animation: scan 4s linear infinite;
+    }
+
+    @keyframes scan {
+      0% { top: -100px; }
+      100% { top: 100%; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    @keyframes typeIn {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes traceRoute {
+      from { stroke-dashoffset: 1000; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    .animate-fadeslide { animation: fadeSlideUp 0.6s ease-out forwards; }
+    .pulse-dot { animation: pulse 2s ease-in-out infinite; }
+
+    .route-node {
+      position: relative;
+    }
+    .route-node::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -24px;
+      width: 2px;
+      height: 24px;
+      background: linear-gradient(180deg, #00ff88, transparent);
+    }
+    .route-node:last-child::after { display: none; }
+
+    .data-card {
+      background: linear-gradient(135deg, #12121a 0%, #1a1a28 100%);
+      border: 1px solid #2a2a3a;
+      transition: all 0.3s;
+    }
+    .data-card:hover {
+      border-color: #00ff8866;
+      box-shadow: 0 0 20px #00ff8811;
+      transform: translateY(-2px);
+    }
+
+    .tag {
+      background: #00ff8815;
+      border: 1px solid #00ff8833;
+      color: #00ff88;
+    }
+
+    .progress-track {
+      background: #1a1a28;
+      border-radius: 999px;
+      overflow: hidden;
+      height: 8px;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 1.5s ease-out;
+    }
+
+    .hero-gradient {
+      background: radial-gradient(ellipse at 50% 0%, #00ff8808 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 50%, #ff338808 0%, transparent 50%),
+                  radial-gradient(ellipse at 20% 80%, #3388ff08 0%, transparent 50%);
+    }
+
+    nav a { position: relative; color: #5a5a7a; transition: color 0.3s; }
+    nav a:hover { color: #00ff88; }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #00ff88;
+      transition: width 0.3s;
+    }
+    nav a:hover::after { width: 100%; }
+
+    .stat-number {
+      background: linear-gradient(135deg, #00ff88, #3388ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  </style>
+</head>
+<body class="grid-bg min-h-screen overflow-x-hidden">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 bg-void/80 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-2 h-2 rounded-full bg-neonGreen pulse-dot"></div>
+        <span class="font-mono text-sm font-bold tracking-wider text-neonGreen">THJ</span>
+        <span class="font-display text-sm text-muted hidden sm:inline">// THE HIDDEN JOURNEY</span>
+      </div>
+      <div class="hidden md:flex items-center gap-6 font-mono text-xs tracking-wide">
+        <a href="#track">TRACK</a>
+        <a href="#explore">EXPLORE</a>
+        <a href="#calculate">CALCULATE</a>
+        <a href="#impact">IMPACT</a>
+        <a href="#story">STORY</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="font-mono text-xs text-muted hidden sm:inline">v1.0</span>
+        <button class="md:hidden text-neonGreen font-mono text-sm">[MENU]</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="min-h-screen flex items-center justify-center px-4 pt-16 relative hero-gradient">
+    <div class="scan-line"></div>
+
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      <div class="font-mono text-xs text-neonGreen/60 tracking-[0.3em] mb-6 animate-fadeslide">
+        GIRL SCOUT GOLD AWARD PROJECT — SUPPLY CHAIN TRACKER
+      </div>
+
+      <h1 class="font-display font-900 text-5xl md:text-7xl lg:text-8xl leading-[0.9] mb-6" style="animation: fadeSlideUp 0.6s ease-out 0.2s both">
+        THE HIDDEN<br>
+        <span class="glow-green text-neonGreen">JOURNEY</span>
+      </h1>
+
+      <p class="font-display text-xl md:text-2xl text-white/40 font-light mb-3" style="animation: fadeSlideUp 0.6s ease-out 0.4s both">
+        Where Your Stuff Really Comes From
+      </p>
+
+      <p class="font-mono text-sm text-muted max-w-lg mx-auto mb-10" style="animation: fadeSlideUp 0.6s ease-out 0.6s both">
+        One Girl Scout cookie. Six countries. 12,000+ miles.
+        <br>Track the invisible supply chain.
+      </p>
+
+      <!-- Stats bar -->
+      <div class="flex items-center justify-center gap-8 md:gap-16 mb-12" style="animation: fadeSlideUp 0.6s ease-out 0.8s both">
+        <div class="text-center">
+          <div class="font-display font-bold text-3xl md:text-4xl stat-number">6</div>
+          <div class="font-mono text-xs text-muted mt-1">COUNTRIES</div>
+        </div>
+        <div class="w-px h-10 bg-white/10"></div>
+        <div class="text-center">
+          <div class="font-display font-bold text-3xl md:text-4xl stat-number">0.8</div>
+          <div class="font-mono text-xs text-muted mt-1">KG CO₂/BOX</div>
+        </div>
+        <div class="w-px h-10 bg-white/10"></div>
+        <div class="text-center">
+          <div class="font-display font-bold text-3xl md:text-4xl stat-number">200M+</div>
+          <div class="font-mono text-xs text-muted mt-1">BOXES/YEAR</div>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4" style="animation: fadeSlideUp 0.6s ease-out 1s both">
+        <a href="#track" class="bg-neonGreen text-void font-mono font-bold text-sm px-8 py-3 hover:bg-neonGreen/80 transition-colors tracking-wider">
+          START TRACKING →
+        </a>
+        <a href="#story" class="font-mono text-sm text-muted hover:text-neonPink transition-colors border border-white/10 px-8 py-3 hover:border-neonPink/30">
+          OLIVIA'S STORY
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Tracking -->
+  <section id="track" class="py-20 px-4">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-2 h-2 rounded-full bg-neonGreen pulse-dot"></div>
+        <span class="font-mono text-xs text-neonGreen tracking-wider">PRODUCT TRACKING</span>
+      </div>
+      <h2 class="font-display font-bold text-3xl md:text-5xl mb-4">Thin Mint Cookie</h2>
+      <p class="font-display text-white/40 mb-12">Trace every ingredient from source to your doorstep.</p>
+
+      <!-- Route Tracker -->
+      <div class="data-card rounded-xl p-6 md:p-10 mb-8">
+        <div class="flex items-center justify-between mb-8">
+          <span class="font-mono text-xs text-muted tracking-wider">ROUTE MAP</span>
+          <span class="tag font-mono text-xs px-3 py-1 rounded-full">LIVE TRACKING</span>
+        </div>
+
+        <!-- Route Steps -->
+        <div class="space-y-0">
+          <!-- Step 1 -->
+          <div class="flex items-start gap-4 md:gap-6 pb-8 relative">
+            <div class="flex flex-col items-center shrink-0">
+              <div class="w-10 h-10 rounded-full border-2 border-neonGreen bg-neonGreen/10 flex items-center justify-center">
+                <div class="w-3 h-3 rounded-full bg-neonGreen"></div>
+              </div>
+              <div class="w-0.5 h-full bg-gradient-to-b from-neonGreen/50 to-neonGreen/10 absolute top-10 left-[19px]"></div>
+            </div>
+            <div class="flex-1 pb-4">
+              <div class="flex items-center gap-2 mb-1">
+                <h4 class="font-display font-bold text-lg">Palm Oil Plantations</h4>
+                <span class="tag font-mono text-[10px] px-2 py-0.5 rounded-full">CONFIRMED</span>
+              </div>
+              <p class="font-mono text-xs text-muted mb-2">INDONESIA / MALAYSIA</p>
+              <p class="font-display text-sm text-white/50">RSPO Mass Balance certified. Harvested, processed, and loaded onto cargo ships bound for U.S. ports.</p>
+              <div class="flex items-center gap-4 mt-3">
+                <div class="flex items-center gap-1.5">
+                  <span class="font-mono text-xs text-neonGreen">CO₂</span>
+                  <span class="font-mono text-xs text-white/40">~0.25 kg</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <span class="font-mono text-xs text-neonBlue">MODE</span>
+                  <span class="font-mono text-xs text-white/40">Cargo Ship</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="flex items-start gap-4 md:gap-6 pb-8 relative">
+            <div class="flex flex-col items-center shrink-0">
+              <div class="w-10 h-10 rounded-full border-2 border-neonYellow bg-neonYellow/10 flex items-center justify-center">
+                <div class="w-3 h-3 rounded-full bg-neonYellow"></div>
+              </div>
+              <div class="w-0.5 h-full bg-gradient-to-b from-neonYellow/50 to-neonYellow/10 absolute top-10 left-[19px]"></div>
+            </div>
+            <div class="flex-1 pb-4">
+              <div class="flex items-center gap-2 mb-1">
+                <h4 class="font-display font-bold text-lg">Cocoa Farms</h4>
+                <span class="tag font-mono text-[10px] px-2 py-0.5 rounded-full">CONFIRMED</span>
+              </div>
+              <p class="font-mono text-xs text-muted mb-2">IVORY COAST / GHANA</p>
+              <p class="font-display text-sm text-white/50">World Cocoa Foundation sourced. West Africa produces ~70% of the world's cocoa supply.</p>
+              <div class="flex items-center gap-4 mt-3">
+                <div class="flex items-center gap-1.5">
+                  <span class="font-mono text-xs text-neonGreen">CO₂</span>
+                  <span class="font-mono text-xs text-white/40">~0.20 kg</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <span class="font-mono text-xs text-neonBlue">MODE</span>
+                  <span class="font-mono text-xs text-white/40">Cargo Ship</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="flex items-start gap-4 md:gap-6 pb-8 relative">
+            <div class="flex flex-col items-center shrink-0">
+              <div class="w-10 h-10 rounded-full border-2 border-neonBlue bg-neonBlue/10 flex items-center justify-center">
+                <div class="w-3 h-3 rounded-full bg-neonBlue"></div>
+              </div>
+              <div class="w-0.5 h-full bg-gradient-to-b from-neonBlue/50 to-neonBlue/10 absolute top-10 left-[19px]"></div>
+            </div>
+            <div class="flex-1 pb-4">
+              <div class="flex items-center gap-2 mb-1">
+                <h4 class="font-display font-bold text-lg">Sugar, Flour & Peppermint</h4>
+                <span class="font-mono text-[10px] px-2 py-0.5 rounded-full bg-neonYellow/15 border border-neonYellow/33 text-neonYellow">ESTIMATED</span>
+              </div>
+              <p class="font-mono text-xs text-muted mb-2">U.S. MIDWEST / PACIFIC NW</p>
+              <p class="font-display text-sm text-white/50">Domestic ingredients transported by truck and rail across the heartland.</p>
+              <div class="flex items-center gap-4 mt-3">
+                <div class="flex items-center gap-1.5">
+                  <span class="font-mono text-xs text-neonGreen">CO₂</span>
+                  <span class="font-mono text-xs text-white/40">~0.10 kg</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <span class="font-mono text-xs text-neonBlue">MODE</span>
+                  <span class="font-mono text-xs text-white/40">Truck / Rail</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="flex items-start gap-4 md:gap-6 pb-8 relative">
+            <div class="flex flex-col items-center shrink-0">
+              <div class="w-10 h-10 rounded-full border-2 border-neonPink bg-neonPink/10 flex items-center justify-center">
+                <div class="w-3 h-3 rounded-full bg-neonPink"></div>
+              </div>
+              <div class="w-0.5 h-full bg-gradient-to-b from-neonPink/50 to-neonPink/10 absolute top-10 left-[19px]"></div>
+            </div>
+            <div class="flex-1 pb-4">
+              <div class="flex items-center gap-2 mb-1">
+                <h4 class="font-display font-bold text-lg">Bakery</h4>
+                <span class="tag font-mono text-[10px] px-2 py-0.5 rounded-full">CONFIRMED</span>
+              </div>
+              <p class="font-mono text-xs text-muted mb-2">SOUTH DAKOTA or KENTUCKY</p>
+              <p class="font-display text-sm text-white/50">
+                ABC Bakers (North Sioux City, SD — owned by Weston Foods 🇨🇦) or
+                Little Brownie Bakers (Louisville, KY — owned by Ferrero 🇮🇹).
+              </p>
+              <div class="flex items-center gap-4 mt-3">
+                <div class="flex items-center gap-1.5">
+                  <span class="font-mono text-xs text-neonGreen">CO₂</span>
+                  <span class="font-mono text-xs text-white/40">~0.15 kg</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <span class="font-mono text-xs text-neonBlue">TYPE</span>
+                  <span class="font-mono text-xs text-white/40">Manufacturing</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="flex items-start gap-4 md:gap-6">
+            <div class="flex flex-col items-center shrink-0">
+              <div class="w-10 h-10 rounded-full border-2 border-white/30 bg-white/5 flex items-center justify-center">
+                <div class="w-3 h-3 rounded-full bg-white/50"></div>
+              </div>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1">
+                <h4 class="font-display font-bold text-lg">Your Neighborhood</h4>
+                <span class="font-mono text-[10px] px-2 py-0.5 rounded-full bg-neonBlue/15 border border-neonBlue/33 text-neonBlue">VARIES</span>
+              </div>
+              <p class="font-mono text-xs text-muted mb-2">DISTRIBUTION → YOU</p>
+              <p class="font-display text-sm text-white/50">The last mile. Distance depends on which council you belong to.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carbon Breakdown -->
+      <div class="data-card rounded-xl p-6 md:p-8">
+        <div class="flex items-center justify-between mb-6">
+          <span class="font-mono text-xs text-muted tracking-wider">CARBON BREAKDOWN</span>
+          <span class="font-display font-bold text-2xl glow-green text-neonGreen">~0.8 kg CO₂</span>
+        </div>
+        <div class="space-y-4">
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="font-mono text-xs text-white/50">FARMING & RAW MATERIALS</span>
+              <span class="font-mono text-xs text-neonGreen">35%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill bg-gradient-to-r from-neonGreen to-neonGreen/60" style="width:35%"></div></div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="font-mono text-xs text-white/50">INTERNATIONAL SHIPPING</span>
+              <span class="font-mono text-xs text-neonBlue">30%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill bg-gradient-to-r from-neonBlue to-neonBlue/60" style="width:30%"></div></div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="font-mono text-xs text-white/50">MANUFACTURING</span>
+              <span class="font-mono text-xs text-neonPink">20%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill bg-gradient-to-r from-neonPink to-neonPink/60" style="width:20%"></div></div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="font-mono text-xs text-white/50">DISTRIBUTION</span>
+              <span class="font-mono text-xs text-neonYellow">15%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill bg-gradient-to-r from-neonYellow to-neonYellow/60" style="width:15%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other Products -->
+      <div class="grid md:grid-cols-2 gap-4 mt-6">
+        <div class="data-card rounded-xl p-6 cursor-pointer group">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="font-mono text-[10px] text-muted tracking-wider">PRODUCT #002</span>
+              <h3 class="font-display font-bold text-xl mt-1 group-hover:text-neonGreen transition-colors">Girl Scout Vest</h3>
+              <p class="font-display text-sm text-white/30 mt-1">Made in USA — recycled polyester</p>
+            </div>
+            <div class="text-right">
+              <span class="font-display font-bold text-xl text-neonGreen">~10 kg</span>
+              <p class="font-mono text-[10px] text-muted">CO₂</p>
+            </div>
+          </div>
+        </div>
+        <div class="data-card rounded-xl p-6 cursor-pointer group">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="font-mono text-[10px] text-muted tracking-wider">PRODUCT #003</span>
+              <h3 class="font-display font-bold text-xl mt-1 group-hover:text-neonGreen transition-colors">Cookie Box</h3>
+              <p class="font-display text-sm text-white/30 mt-1">100% recycled paperboard</p>
+            </div>
+            <div class="text-right">
+              <span class="font-display font-bold text-xl text-neonGreen">~0.2 kg</span>
+              <p class="font-mono text-[10px] text-muted">CO₂</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore -->
+  <section id="explore" class="py-20 px-4 border-t border-white/5">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-2 h-2 rounded-full bg-neonBlue pulse-dot"></div>
+        <span class="font-mono text-xs text-neonBlue tracking-wider">DATABASE</span>
+      </div>
+      <h2 class="font-display font-bold text-3xl md:text-5xl mb-4">Explore Products</h2>
+      <p class="font-display text-white/40 mb-10">30+ products in the Girl Scout world. Search the database.</p>
+
+      <!-- Search -->
+      <div class="data-card rounded-xl p-1.5 flex items-center mb-8 glow-border-green">
+        <span class="font-mono text-sm text-neonGreen pl-4">→</span>
+        <input type="text" placeholder="search product database..." class="flex-1 bg-transparent font-mono text-sm px-3 py-3 outline-none text-white placeholder:text-muted">
+        <button class="bg-neonGreen/10 border border-neonGreen/30 text-neonGreen font-mono text-xs px-4 py-2 rounded mr-1 hover:bg-neonGreen/20 transition-colors">SEARCH</button>
+      </div>
+
+      <!-- Category Pills -->
+      <div class="flex flex-wrap gap-2 mb-10">
+        <button class="font-mono text-xs px-4 py-2 rounded-full bg-neonGreen/10 border border-neonGreen/30 text-neonGreen hover:bg-neonGreen/20 transition-colors">ALL</button>
+        <button class="font-mono text-xs px-4 py-2 rounded-full bg-surfaceLight border border-white/10 text-muted hover:border-white/30 transition-colors">COOKIES</button>
+        <button class="font-mono text-xs px-4 py-2 rounded-full bg-surfaceLight border border-white/10 text-muted hover:border-white/30 transition-colors">UNIFORM</button>
+        <button class="font-mono text-xs px-4 py-2 rounded-full bg-surfaceLight border border-white/10 text-muted hover:border-white/30 transition-colors">CAMPING</button>
+        <button class="font-mono text-xs px-4 py-2 rounded-full bg-surfaceLight border border-white/10 text-muted hover:border-white/30 transition-colors">CRAFTS</button>
+        <button class="font-mono text-xs px-4 py-2 rounded-full bg-surfaceLight border border-white/10 text-muted hover:border-white/30 transition-colors">SNACKS</button>
+        <button class="font-mono text-xs px-4 py-2 rounded-full bg-surfaceLight border border-white/10 text-muted hover:border-white/30 transition-colors">EVERYDAY</button>
+      </div>
+
+      <!-- Results Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div class="data-card rounded-lg p-4 cursor-pointer text-center group">
+          <div class="text-3xl mb-2">🍪</div>
+          <h4 class="font-display font-semibold text-sm group-hover:text-neonGreen transition-colors">Thin Mints</h4>
+          <p class="font-mono text-[10px] text-muted mt-1">6 COUNTRIES</p>
+          <div class="w-full h-px bg-gradient-to-r from-transparent via-neonGreen/30 to-transparent mt-3"></div>
+          <p class="font-mono text-[10px] text-neonGreen mt-2">~0.8 kg CO₂</p>
+        </div>
+        <div class="data-card rounded-lg p-4 cursor-pointer text-center group">
+          <div class="text-3xl mb-2">🥜</div>
+          <h4 class="font-display font-semibold text-sm group-hover:text-neonGreen transition-colors">Tagalongs</h4>
+          <p class="font-mono text-[10px] text-muted mt-1">5 COUNTRIES</p>
+          <div class="w-full h-px bg-gradient-to-r from-transparent via-neonGreen/30 to-transparent mt-3"></div>
+          <p class="font-mono text-[10px] text-neonGreen mt-2">~0.9 kg CO₂</p>
+        </div>
+        <div class="data-card rounded-lg p-4 cursor-pointer text-center group">
+          <div class="text-3xl mb-2">⛺</div>
+          <h4 class="font-display font-semibold text-sm group-hover:text-neonGreen transition-colors">Camping Tent</h4>
+          <p class="font-mono text-[10px] text-muted mt-1">4 COUNTRIES</p>
+          <div class="w-full h-px bg-gradient-to-r from-transparent via-neonBlue/30 to-transparent mt-3"></div>
+          <p class="font-mono text-[10px] text-neonBlue mt-2">~25 kg CO₂</p>
+        </div>
+        <div class="data-card rounded-lg p-4 cursor-pointer text-center group">
+          <div class="text-3xl mb-2">📱</div>
+          <h4 class="font-display font-semibold text-sm group-hover:text-neonGreen transition-colors">Smartphone</h4>
+          <p class="font-mono text-[10px] text-muted mt-1">8+ COUNTRIES</p>
+          <div class="w-full h-px bg-gradient-to-r from-transparent via-neonPink/30 to-transparent mt-3"></div>
+          <p class="font-mono text-[10px] text-neonPink mt-2">~70 kg CO₂</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator -->
+  <section id="calculate" class="py-20 px-4 border-t border-white/5">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-2 h-2 rounded-full bg-neonPink pulse-dot"></div>
+        <span class="font-mono text-xs text-neonPink tracking-wider">CALCULATOR</span>
+      </div>
+      <h2 class="font-display font-bold text-3xl md:text-5xl mb-4">Council Carbon Calculator</h2>
+      <p class="font-display text-white/40 mb-10">Same cookie, different footprint. Where you live changes the math.</p>
+
+      <div class="data-card rounded-xl p-6 md:p-10 glow-border-pink">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <label class="font-mono text-xs text-muted tracking-wider block mb-3">SELECT COUNCIL</label>
+            <select class="w-full bg-surfaceLight border border-white/10 rounded-lg px-4 py-3 font-display text-sm outline-none focus:border-neonPink/50 transition-colors text-white">
+              <option>Choose your Girl Scout council...</option>
+              <option>Girl Scouts of Greater Los Angeles</option>
+              <option>Girl Scouts Heart of the South</option>
+              <option>Girl Scouts of Kentuckiana</option>
+            </select>
+
+            <div class="mt-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-xs text-muted">BAKERY</span>
+                <span class="font-display text-sm">Little Brownie Bakers</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-xs text-muted">LOCATION</span>
+                <span class="font-display text-sm">Louisville, KY</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-xs text-muted">DISTANCE</span>
+                <span class="font-display text-sm text-neonBlue">~1,200 mi</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col justify-center items-center">
+            <div class="text-center p-8 rounded-xl bg-void/50 border border-white/5 w-full">
+              <p class="font-mono text-xs text-neonPink tracking-wider mb-3">YOUR FOOTPRINT</p>
+              <p class="font-display font-bold text-6xl glow-pink text-neonPink">0.82</p>
+              <p class="font-mono text-xs text-muted mt-2">KG CO₂ PER BOX</p>
+              <div class="w-full h-px bg-gradient-to-r from-transparent via-neonPink/30 to-transparent my-4"></div>
+              <p class="font-mono text-[10px] text-white/30">
+                Kentucky: 0.76 kg · California: 0.88 kg
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why It Matters -->
+  <section id="impact" class="py-20 px-4 border-t border-white/5">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-2 h-2 rounded-full bg-neonYellow pulse-dot"></div>
+        <span class="font-mono text-xs text-neonYellow tracking-wider">IMPACT ANALYSIS</span>
+      </div>
+      <h2 class="font-display font-bold text-3xl md:text-5xl mb-12">Why It Matters</h2>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="data-card rounded-xl p-8 border-l-2 border-l-neonGreen">
+          <div class="font-display font-bold text-4xl stat-number mb-3">7%</div>
+          <h3 class="font-display font-bold text-lg mb-2">Environmental Impact</h3>
+          <p class="font-display text-sm text-white/40 leading-relaxed">Global freight produces ~7% of all greenhouse gas emissions. Every product has a hidden carbon cost.</p>
+        </div>
+
+        <div class="data-card rounded-xl p-8 border-l-2 border-l-neonPink">
+          <div class="font-display font-bold text-4xl text-neonPink mb-3">⚠</div>
+          <h3 class="font-display font-bold text-lg mb-2">Labor & Human Rights</h3>
+          <p class="font-display text-sm text-white/40 leading-relaxed">Supply chains can hide child labor and unsafe conditions behind certification labels like "mixed."</p>
+        </div>
+
+        <div class="data-card rounded-xl p-8 border-l-2 border-l-neonBlue">
+          <div class="font-display font-bold text-4xl text-neonBlue mb-3">6</div>
+          <h3 class="font-display font-bold text-lg mb-2">Global Cooperation</h3>
+          <p class="font-display text-sm text-white/40 leading-relaxed">One cookie connects workers across six countries. Your purchase is part of a global web of human effort.</p>
+        </div>
+
+        <div class="data-card rounded-xl p-8 border-l-2 border-l-neonYellow">
+          <div class="font-display font-bold text-4xl text-neonYellow mb-3">YOU</div>
+          <h3 class="font-display font-bold text-lg mb-2">Consumer Power</h3>
+          <p class="font-display text-sm text-white/40 leading-relaxed">Informed consumers push brands toward better practices. Knowing where stuff comes from is step one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Olivia's Story -->
+  <section id="story" class="py-20 px-4 border-t border-white/5">
+    <div class="max-w-3xl mx-auto">
+      <div class="data-card rounded-xl p-8 md:p-12 glow-border-pink">
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-2 h-2 rounded-full bg-neonPink pulse-dot"></div>
+          <span class="font-mono text-xs text-neonPink tracking-wider">TRUE STORY</span>
+        </div>
+        <h2 class="font-display font-bold text-3xl md:text-4xl mb-8">Olivia Chaffin's Story</h2>
+
+        <div class="space-y-5 font-display text-white/50 leading-relaxed">
+          <p>
+            <span class="text-white font-bold">Olivia Chaffin was a Girl Scout in Tennessee</span> when she decided to look more closely at the label on her cookie box. What she found changed everything.
+          </p>
+          <p>
+            The palm oil in her cookies carried a <span class="text-neonPink font-semibold">"mixed" certification label</span> — meaning it could come from sustainable sources, or from plantations linked to deforestation and labor abuses.
+          </p>
+          <p>
+            She didn't look away. She researched. She asked questions. And then she launched a petition that got national attention.
+          </p>
+          <blockquote class="border-l-2 border-neonPink pl-6 py-2 my-6">
+            <p class="font-display text-xl text-white/70 italic">"One Girl Scout asked a question. That question became a movement."</p>
+          </blockquote>
+          <p class="font-mono text-xs text-muted italic">
+            — Original content by Mia, coming soon
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-4 border-t border-white/5">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-2 h-2 rounded-full bg-neonGreen pulse-dot"></div>
+        <span class="font-mono text-sm text-muted">THE HIDDEN JOURNEY</span>
+      </div>
+      <p class="font-mono text-xs text-muted text-center">A Girl Scout Gold Award Project by Mia</p>
+      <p class="font-mono text-[10px] text-white/20">All CO₂ data are educational estimates (~)</p>
+    </div>
+  </footer>
+
+</body>
+</html>
