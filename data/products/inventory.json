@@ -1,0 +1,23 @@
+{
+  "products": [
+    {
+      "slug": "thin-mint",
+      "name": "Thin Mint Cookie",
+      "emoji": "🍪",
+      "category": "cookie-varieties",
+      "carbonTotal": null,
+      "countriesCount": null,
+      "hasDedicatedPage": true
+    }
+  ],
+  "_template": {
+    "slug": "example-product",
+    "name": "Example Product Name",
+    "emoji": "❓",
+    "category": "one of: cookie-varieties | uniform-accessories | cookie-packaging | camping-outdoor | craft-supplies | meeting-snacks | everyday-items",
+    "carbonTotal": 0.0,
+    "countriesCount": 0,
+    "hasDedicatedPage": false
+  },
+  "_instructions": "Add one entry per product. Products with hasDedicatedPage: true link to their own deep-dive page. Others show summary data in the search results. Aim for 30-50 total products across all categories."
+}

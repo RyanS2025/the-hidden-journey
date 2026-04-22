@@ -1,0 +1,25 @@
+{
+  "factors": {
+    "ship": {
+      "kgCO2PerTonKm": 0.016,
+      "label": "Ocean Freight",
+      "emoji": "🚢"
+    },
+    "truck": {
+      "kgCO2PerTonKm": 0.062,
+      "label": "Truck",
+      "emoji": "🚚"
+    },
+    "rail": {
+      "kgCO2PerTonKm": 0.022,
+      "label": "Rail",
+      "emoji": "🚂"
+    },
+    "air": {
+      "kgCO2PerTonKm": 0.5,
+      "label": "Air Freight",
+      "emoji": "✈️"
+    }
+  },
+  "_instructions": "These emission factors are used by the build-time carbon calculation script. Values are in kg CO₂ per ton-kilometer. Ryan will update these if a more accurate source is found — Mia should not need to edit this file."
+}

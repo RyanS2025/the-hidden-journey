@@ -1,0 +1,28 @@
+{
+  "questions": [
+    {
+      "id": "q001",
+      "topic": "thin-mint",
+      "question": "",
+      "choices": ["", "", "", ""],
+      "correctIndex": 0
+    }
+  ],
+  "_template": {
+    "id": "q001",
+    "topic": "one of: thin-mint | vest | cookie-box | carbon | why-it-matters | olivia-chaffin",
+    "question": "The question text goes here?",
+    "choices": ["Wrong answer", "Correct answer", "Wrong answer", "Wrong answer"],
+    "correctIndex": 1
+  },
+  "_distribution": {
+    "thin-mint": 10,
+    "vest": 6,
+    "cookie-box": 5,
+    "carbon": 7,
+    "why-it-matters": 7,
+    "olivia-chaffin": 5,
+    "total": 40
+  },
+  "_instructions": "Write 40 total questions. Each question needs an id (q001-q040), a topic tag, the question text, 3-4 answer choices, and the correctIndex (0-based position of the correct answer). See _distribution for how many questions per topic."
+}

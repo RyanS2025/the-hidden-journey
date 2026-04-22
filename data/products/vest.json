@@ -1,0 +1,63 @@
+{
+  "slug": "girl-scout-vest",
+  "name": "Girl Scout Vest",
+  "emoji": "🧥",
+  "category": "uniform-accessories",
+  "description": "",
+  "carbonTotal": null,
+  "countriesCount": null,
+  "supplyChain": [
+    {
+      "id": "polyester",
+      "label": "Recycled Polyester",
+      "emoji": "♻️",
+      "origin": "",
+      "destination": "",
+      "transportMode": "truck",
+      "distanceKm": null,
+      "carbonKg": null,
+      "confidence": "confirmed",
+      "description": ""
+    },
+    {
+      "id": "textile",
+      "label": "Textile Production & Dyeing",
+      "emoji": "🧵",
+      "origin": "",
+      "destination": "",
+      "transportMode": "truck",
+      "distanceKm": null,
+      "carbonKg": null,
+      "confidence": "estimated",
+      "description": ""
+    },
+    {
+      "id": "sewing",
+      "label": "Sewing & Assembly",
+      "emoji": "🪡",
+      "origin": "",
+      "destination": "",
+      "transportMode": "truck",
+      "distanceKm": null,
+      "carbonKg": null,
+      "confidence": "confirmed",
+      "description": ""
+    },
+    {
+      "id": "distribution",
+      "label": "Distribution",
+      "emoji": "🚚",
+      "origin": "",
+      "destination": "",
+      "transportMode": "truck",
+      "distanceKm": null,
+      "carbonKg": null,
+      "confidence": "estimated",
+      "description": ""
+    }
+  ],
+  "ethicsStory": {
+    "title": "",
+    "summary": ""
+  }
+}

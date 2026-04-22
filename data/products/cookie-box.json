@@ -1,0 +1,63 @@
+{
+  "slug": "cookie-box",
+  "name": "Cookie Box (Packaging)",
+  "emoji": "📦",
+  "category": "cookie-packaging",
+  "description": "",
+  "carbonTotal": null,
+  "countriesCount": null,
+  "supplyChain": [
+    {
+      "id": "pulp",
+      "label": "Pulp Sourcing",
+      "emoji": "🌲",
+      "origin": "",
+      "destination": "",
+      "transportMode": "truck",
+      "distanceKm": null,
+      "carbonKg": null,
+      "confidence": "estimated",
+      "description": ""
+    },
+    {
+      "id": "paper-mill",
+      "label": "Paper Mill",
+      "emoji": "🏭",
+      "origin": "",
+      "destination": "",
+      "transportMode": "truck",
+      "distanceKm": null,
+      "carbonKg": null,
+      "confidence": "estimated",
+      "description": ""
+    },
+    {
+      "id": "printing",
+      "label": "Printing",
+      "emoji": "🖨️",
+      "origin": "",
+      "destination": "",
+      "transportMode": "truck",
+      "distanceKm": null,
+      "carbonKg": null,
+      "confidence": "estimated",
+      "description": ""
+    },
+    {
+      "id": "assembly",
+      "label": "Box Assembly",
+      "emoji": "📦",
+      "origin": "",
+      "destination": "",
+      "transportMode": "truck",
+      "distanceKm": null,
+      "carbonKg": null,
+      "confidence": "estimated",
+      "description": ""
+    }
+  ],
+  "ethicsStory": {
+    "title": "",
+    "summary": ""
+  }
+}
