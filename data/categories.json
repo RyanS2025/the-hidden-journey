@@ -1,0 +1,46 @@
+{
+  "categories": [
+    {
+      "id": "cookie-varieties",
+      "name": "Cookie Varieties",
+      "emoji": "🍪",
+      "examples": "Thin Mints, Samoas/Caramel deLites, Tagalongs, Do-si-dos, Trefoils, Lemon-Ups"
+    },
+    {
+      "id": "uniform-accessories",
+      "name": "Uniform & Accessories",
+      "emoji": "🧥",
+      "examples": "Vest, sash, badges, pins"
+    },
+    {
+      "id": "cookie-packaging",
+      "name": "Cookie Packaging",
+      "emoji": "📦",
+      "examples": "Cookie box, case packaging, shipping materials"
+    },
+    {
+      "id": "camping-outdoor",
+      "name": "Camping & Outdoor Gear",
+      "emoji": "⛺",
+      "examples": "Tent, sleeping bag, water bottle, backpack"
+    },
+    {
+      "id": "craft-supplies",
+      "name": "Craft Supplies",
+      "emoji": "🎨",
+      "examples": "Colored pencils, glue sticks, construction paper"
+    },
+    {
+      "id": "meeting-snacks",
+      "name": "Meeting Snacks & Supplies",
+      "emoji": "🍌",
+      "examples": "Bananas, juice boxes, paper plates"
+    },
+    {
+      "id": "everyday-items",
+      "name": "Everyday Items",
+      "emoji": "👟",
+      "examples": "T-shirt, sneakers, smartphone, pencil"
+    }
+  ]
+}

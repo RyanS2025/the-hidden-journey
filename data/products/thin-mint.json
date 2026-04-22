@@ -1,0 +1,99 @@
+{
+  "slug": "thin-mint",
+  "name": "Thin Mint Cookie",
+  "emoji": "🍪",
+  "category": "cookie-varieties",
+  "description": "",
+  "carbonTotal": null,
+  "countriesCount": null,
+  "supplyChain": [
+    {
+      "id": "palm-oil",
+      "label": "Palm Oil",
+      "emoji": "🌴",
+      "origin": "",
+      "destination": "",
+      "transportMode": "ship",
+      "distanceKm": null,
+      "carbonKg": null,
+      "confidence": "confirmed",
+      "description": ""
+    },
+    {
+      "id": "cocoa",
+      "label": "Cocoa",
+      "emoji": "🍫",
+      "origin": "",
+      "destination": "",
+      "transportMode": "ship",
+      "distanceKm": null,
+      "carbonKg": null,
+      "confidence": "confirmed",
+      "description": ""
+    },
+    {
+      "id": "sugar",
+      "label": "Sugar",
+      "emoji": "🍬",
+      "origin": "",
+      "destination": "",
+      "transportMode": "truck",
+      "distanceKm": null,
+      "carbonKg": null,
+      "confidence": "estimated",
+      "description": ""
+    },
+    {
+      "id": "flour",
+      "label": "Flour",
+      "emoji": "🌾",
+      "origin": "",
+      "destination": "",
+      "transportMode": "truck",
+      "distanceKm": null,
+      "carbonKg": null,
+      "confidence": "estimated",
+      "description": ""
+    },
+    {
+      "id": "peppermint",
+      "label": "Peppermint Oil",
+      "emoji": "🌿",
+      "origin": "",
+      "destination": "",
+      "transportMode": "truck",
+      "distanceKm": null,
+      "carbonKg": null,
+      "confidence": "estimated",
+      "description": ""
+    },
+    {
+      "id": "baking",
+      "label": "Baking & Assembly",
+      "emoji": "🏭",
+      "origin": "",
+      "destination": "",
+      "transportMode": "truck",
+      "distanceKm": null,
+      "carbonKg": null,
+      "confidence": "confirmed",
+      "description": ""
+    },
+    {
+      "id": "distribution",
+      "label": "Distribution",
+      "emoji": "🚚",
+      "origin": "",
+      "destination": "",
+      "transportMode": "truck",
+      "distanceKm": null,
+      "carbonKg": null,
+      "confidence": "estimated",
+      "description": ""
+    }
+  ],
+  "ethicsStory": {
+    "title": "",
+    "summary": ""
+  }
+}

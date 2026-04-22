@@ -35,6 +35,90 @@ The JSON files Ryan creates (empty, for Mia to fill):
 
 ---
 
+## Phase 0.5 — Mia's Setup (Do This Once Before Starting)
+
+Ryan has already set up the project. Before you start working, you need to get it running on your computer. This only takes a few minutes and you only have to do it once.
+
+### Step 1: Install the tools you need
+
+You need two things installed on your computer: **Node.js** and **Git**. You might already have them.
+
+**Check if you have them:** Open the Terminal app (on Mac, search for "Terminal" in Spotlight) and type these one at a time:
+
+```
+node --version
+git --version
+```
+
+If both print a version number, you're good — skip to Step 2. If either says "command not found":
+
+- **Node.js:** Go to https://nodejs.org and click the big green download button. Install it like any other app.
+- **Git:** On Mac, typing `git --version` will prompt you to install it automatically. On Windows, download from https://git-scm.com.
+
+### Step 2: Get the project on your computer
+
+In Terminal, navigate to where you want the project folder and run:
+
+```
+git clone https://github.com/RyanS2025/the-hidden-journey.git
+cd the-hidden-journey
+```
+
+This downloads the project. You only do this once.
+
+### Step 3: Install the project's dependencies
+
+Still in Terminal, inside the `the-hidden-journey` folder:
+
+```
+npm install
+```
+
+This downloads all the libraries the project needs. It'll take a minute and print a lot of text — that's normal. You only need to do this once (unless Ryan adds new libraries, in which case he'll tell you to run it again).
+
+### Step 4: See the site on your computer
+
+```
+npm run dev
+```
+
+This starts the site locally. Open your browser and go to **http://localhost:3000** — you should see "The Hidden Journey" heading. Press `Ctrl + C` in Terminal to stop it when you're done.
+
+### Day-to-day workflow
+
+Every time you sit down to work:
+
+1. **Pull the latest changes** (in case Ryan pushed something):
+   ```
+   git pull
+   ```
+2. **Do your work** — edit JSON files, write content, or use Claude Code for your coding tasks
+3. **Save your work to Git** when you're at a good stopping point:
+   ```
+   git add .
+   git commit -m "a short note about what you did"
+   git push
+   ```
+   The site will auto-deploy to https://the-hidden-journey.vercel.app after you push.
+
+### Editing JSON files
+
+JSON files are just text files with a specific format. You can open them in VS Code (or any text editor). The key rules:
+
+- **Strings** go in double quotes: `"like this"`
+- **Numbers** don't have quotes: `42` or `0.8`
+- **null** means "no data yet" — replace it with a real value when you have one
+- Every item in a list needs a **comma** after it, except the last one
+- If the site breaks after you edit a JSON file, you probably have a missing comma or quote — check the last thing you changed
+
+Ryan wrote a guide explaining every field: open `data/DATA_GUIDE.md` for a full reference.
+
+### Using Claude Code for your coding tasks
+
+For the pages you're building (homepage, Why It Matters, sources, certificate), open VS Code, open the Terminal inside VS Code (`` Ctrl + ` ``), type `claude`, and describe what you want in plain English. Claude Code will write the code for you — you just need to review that it looks right in the browser.
+
+---
+
 ## Mia's Track — Content, Research & Data
 
 Work on these in any order you like. None of them require code from Ryan.

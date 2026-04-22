@@ -1,0 +1,19 @@
+{
+  "sources": [
+    {
+      "id": "",
+      "name": "",
+      "url": "",
+      "description": "",
+      "usedFor": ""
+    }
+  ],
+  "_template": {
+    "id": "source-1",
+    "name": "Open Supply Hub",
+    "url": "https://opensupplyhub.org",
+    "description": "Factory and supplier location data",
+    "usedFor": "Identifying where Girl Scout product components are manufactured"
+  },
+  "_instructions": "Add one entry per source. Include all sources from the PRD (§4.4) plus any additional sources you use during research. The 'usedFor' field explains what specific data this source provided."
+}

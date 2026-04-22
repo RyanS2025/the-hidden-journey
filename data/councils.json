@@ -1,0 +1,28 @@
+{
+  "bakeries": {
+    "abc-bakers": {
+      "name": "ABC Bakers",
+      "location": "North Sioux City, South Dakota",
+      "owner": "Weston Foods (Canada)",
+      "lat": 42.49,
+      "lng": -96.48
+    },
+    "little-brownie": {
+      "name": "Little Brownie Bakers",
+      "location": "Louisville, Kentucky",
+      "owner": "Ferrero (Italy)",
+      "lat": 38.25,
+      "lng": -85.76
+    }
+  },
+  "councils": [
+    {
+      "id": "",
+      "name": "",
+      "state": "",
+      "bakery": "abc-bakers or little-brownie",
+      "regionCenter": { "lat": 0, "lng": 0 }
+    }
+  ],
+  "_instructions": "Add one entry per Girl Scout council. There are 112 councils total. Each council uses exactly one bakery (abc-bakers or little-brownie). The regionCenter is used to calculate shipping distance from the bakery to the council area."
+}
