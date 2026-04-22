@@ -110,6 +110,30 @@ A presentation mode that lets Mia step through the site's content sequentially d
 - **Self-serve:** Visitors navigate freely on their own
 - **Guided demo:** Mia can walk through a structured flow during a live presentation
 
+### 4.7 Knowledge Quiz & Certificate
+
+A 10-question quiz that visitors can take after exploring the site. Passing earns a printable certificate with the visitor's name.
+
+**How it works:**
+1. Visitor enters their name before starting
+2. 10 questions are drawn randomly from a pool of 40
+3. All questions are multiple choice (3–4 answer options)
+4. Visitor submits answers and sees their score immediately
+5. Score ≥ 7/10 (70%): certificate screen appears with their name — printable or saveable as PDF
+6. Score < 7/10: they see which questions they missed and can retake immediately
+7. Each retake draws a fresh random 10 from the pool — no two attempts are identical
+8. Unlimited retakes
+
+**Question pool:**
+- 40 total questions stored in an editable JSON file (same data-layer pattern as products)
+- Topics span all site content: Thin Mint supply chain, Girl Scout Vest, Cookie Box packaging, the carbon calculator, "Why It Matters" themes, and the Olivia Chaffin story
+- Each question entry includes: question text, answer choices (array), correct answer index, and topic tag
+
+**Certificate:**
+- Displays visitor's name (entered at quiz start), a congratulations message, and the site name
+- Printable via browser print dialog; also saves cleanly as a PDF
+- No login or account required — name is only used for the certificate display
+
 ### 4.3 Why It Matters
 
 Explain why understanding supply chains is important. Four key themes:
@@ -180,6 +204,19 @@ Product
 
 This template lives as editable JSON files. Mia can add products by filling in the route data; the build script calculates emissions automatically.
 
+**Quiz question template:**
+Each entry in the question pool (`questions.json`) follows this structure:
+
+```json
+{
+  "id": "q001",
+  "topic": "thin-mint",
+  "question": "Which country is the largest source of palm oil used in Girl Scout cookies?",
+  "choices": ["Brazil", "Indonesia", "United States", "Ghana"],
+  "correctIndex": 1
+}
+```
+
 ---
 
 ## 6. Constraints
@@ -204,6 +241,7 @@ This template lives as editable JSON files. Mia can add products by filling in t
 - The site also works as a standalone self-serve experience for visitors
 - All sources are cited and verifiable; data confidence levels are transparent
 - Adding or removing products requires editing a JSON file, not code changes
+- Visitors who score 7/10 or higher on the knowledge quiz receive a printable certificate with their name on it; the question pool of 40 is randomized per attempt so retakes feel fresh
 
 ---
 
@@ -214,7 +252,7 @@ This template lives as editable JSON files. Mia can add products by filling in t
 | **Framework** | Next.js | File-based routing, SSG support, large community, great for learning and portfolio |
 | **Styling** | Tailwind CSS | Utility-first, no CSS file context-switching, beginner-friendly |
 | **UI Components** | shadcn/ui | Copy-paste components (not black-box), readable source code for learning |
-| **Data Layer** | Static JSON files | Human-editable, no database, Mia can update products without touching code |
+| **Data Layer** | Static JSON files | Human-editable, no database, Mia can update products without touching code; quiz question pool lives in `questions.json` with the same edit-without-code-changes pattern |
 | **Carbon Calculation** | Build-time Node.js script | Calls Carbon Interface or Climatiq API during build, outputs static JSON |
 | **Hosting** | Vercel free tier | Zero-config Next.js deploys, free custom domain, git push → live URL |
 | **Testing** | Vitest + React Testing Library | Fast, modern, supports TDD workflow |
