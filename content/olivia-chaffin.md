@@ -12,4 +12,4 @@ So Olivia started asking questions. She asked her troop, she researched certific
 
 Olivia is about 20 now. She stopped selling cookies at 14, and the questions she had been asking eventually turned into a petition that was covered by national news. It started a real conversation about transparency in food supply chains — one that is still pushing the industry to be more open about where ingredients come from.
 
-This site exists because of the example she set. Every Scout at a cookie booth deserves to be able to answer the simple question a customer might ask: *where does this come from?* Understanding your own product isn't about tearing anything down — it's about standing behind what you sell with confidence, and knowing the full story of what's in the box.
+This site exists because of the example she set. Every Scout at a cookie booth deserves to be able to answer the simple question a customer might ask: *where does this come from?* Understanding your own product is about standing behind what you sell with confidence, and knowing the full story of what's in the box.
