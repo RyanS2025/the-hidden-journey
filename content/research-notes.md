@@ -19,16 +19,15 @@ These are claims already in your content/mockup that should be verified before s
 
 ## Priority 2 — Council-to-Bakery Mapping (→ `data/councils.json`)
 
-**[Council mapping draft is in `content/councils-research.md`](councils-research.md).** All 112 GSUSA councils are mapped to either ABC Bakers (North Sioux City, SD) or Little Brownie Bakers (Louisville, KY) — derived from Little Brownie's "Our Councils" page (direct, authoritative for LBB) plus Wikipedia's full GSUSA council list (subtraction gives ABC).
+**[Council mapping draft is in `content/councils-research.md`](councils-research.md).** All 112 GSUSA councils are mapped to either ABC Bakers (North Sioux City, SD) or Little Brownie Bakers (Louisville, KY), with draft HQ cities included.
 
 **Status:**
-- [x] Bakery assignment for all 112 councils — drafted
-- [ ] HQ city for each council — still to do (needed for shipping distance calculation)
-- [ ] Spot-check ~10 councils against their own websites to validate the LBB-direct list (Utah switching in 2024 is a known recent change)
+- [x] Bakery assignment for all 112 councils — drafted (LBB direct from littlebrowniebakers.com, ABC by subtraction)
+- [x] Draft HQ city for each council — included with confidence labels (✓ confident, ~ likely, ? verify)
+- [x] **Top 10 verifications complete** (2026-05-03) — all 10 confirmed via individual council websites; **one correction**: "Lakes and Pines" is actually "Girl Scouts of Minnesota and Wisconsin Lakes and Pines" with HQ in Waite Park MN (not Duluth), and covers WI in addition to MN. See full address table in `councils-research.md`.
+- [ ] Distance from each council HQ to its bakery — to be calculated by Ryan via Google Maps API at build time (no manual research needed)
 
-**Where to find HQ cities:**
-- Each council's "About" or "Contact Us" page on its own site usually lists its HQ
-- Or visit girlscouts.org → Find a Council → click each one
+**Spot-checking shortcut:** Visit any council's website and check the cookie names they list. "Caramel deLites" + "Peanut Butter Patties" = ABC. "Samoas" + "Tagalongs" = LBB.
 
 ---
 
@@ -36,28 +35,41 @@ These are claims already in your content/mockup that should be verified before s
 
 The flagship cookie. Goes deepest of all 9.
 
-### Ingredients (per 100g of cookie)
+### Box weight
+- [x] **9 oz / ~255 g** per box (confirmed across multiple sources)
+
+### Ingredients
 For each: source country, RSPO/certification status, processing location, shipping route to bakery, cargo mode, confidence level.
 
-- [ ] **Palm oil** — Indonesia/Malaysia? RSPO Mass Balance. Where does it land in US? (LA port? Houston?)
-- [ ] **Cocoa** — Ivory Coast & Ghana (~70% world supply). Which port lands in US? Process: liquor → mass → cookies.
-- [ ] **Cocoa butter** — same source as cocoa
-- [ ] **Sugar** — likely US Midwest beet sugar (Michigan/Minnesota) or Florida cane sugar. Confirm.
-- [ ] **Flour (wheat)** — US Midwest. Specific state?
-- [ ] **Peppermint oil** — likely Oregon/Washington. Distillation process.
-- [ ] **Soybean oil** — US (Iowa/Illinois Midwest)
-- [ ] **Other**: salt, leavening (baking soda), natural flavor, possibly chocolate liquor
+- [x] **Palm oil** — Indonesia/Malaysia. RSPO Mass Balance certification.
+  - **ABC Bakers**: 2015–2020 used RSPO Credits; **2021 upgraded to Mass Balance**; **2022 selling season onward = 100% RSPO Mass Balance**. Future goal: 100% RSPO Segregated.
+  - **Little Brownie Bakers (Ferrero)**: also Mass Balance for Girl Scout cookies. Parent Ferrero overall sources 96.2% RSPO Segregated, 97% traceable to plantation, ranked #2 of 285 in 2024 WWF Palm Oil Buyers Scorecard.
+  - US landing port: typically Long Beach, CA (Pacific crossing from Indonesia ~9,500 statute mi, ~27 days).
+- [x] **Cocoa** — Ivory Coast & Ghana (~70% world supply). ABC Bakers states it sources from **World Cocoa Foundation members**. Specific corporate supplier not publicly disclosed; industry leaders are Barry Callebaut and Cargill. Atlantic crossing to US East Coast (~6,500 statute mi).
+- [x] **Sugar** — From **sugar beets** (confirmed via cookie ingredient label analysis). Top US sugar-beet states are Minnesota, North Dakota, Idaho, Michigan. ~95% of US sugar beets are genetically engineered.
+- [x] **Peppermint oil** — Pacific Northwest. Top producers (2023):
+  - **Idaho**: 1.13M lbs (~40% US output) ← #1 nationally
+  - **Oregon**: 840K lbs (~30%)
+  - **Washington**: 638K lbs (~23%)
+  - Pacific NW = ~93% of all US peppermint oil.
+- [x] **Wheat (flour)** — Cookies use bread flour = **Hard Red Winter wheat**, ~40% of US wheat production. Grown primarily in the Great Plains (Kansas #1, then Texas, Montana, North Dakota, Idaho). Some cookies may use blends with Hard Red Spring wheat (North Dakota dominant). Confidence: ~ (the bakery doesn't publish its specific wheat source).
+- [x] **Soybean oil** — US Midwest. Top producer states 2024: **Illinois (#1, 688M bushels record year), Iowa, Indiana**, Minnesota, Ohio. ~80% of US soybean acreage is in the Midwest. Confidence: ~ (specific bakery source not published).
+- [ ] **Cocoa butter, salt, leavening, natural flavor** — minor ingredients; pending. Cocoa butter is from cocoa beans (same source as cocoa).
 
 ### Manufacturing
-- [ ] ABC Bakers (SD): annual production volume, energy source if findable
-- [ ] Little Brownie Bakers (KY): same
+- [x] **ABC Bakers** (North Sioux City, SD; division of Interbake Foods, Hearthside-owned): produces **100+ million boxes of Girl Scout cookies annually** at the SD facility. Multiple recent capital upgrades to expand capacity. Energy source: pending.
+- [x] **Little Brownie Bakers** (Ferrero North America, Louisville, KY): the larger of the two bakeries; also has a facility in Richmond, VA. Per LBB's own published council list, they serve ~60 of 112 GSUSA councils (~54%) — note: a thomasnet article cites "~75%" but that appears outdated or refers to sales volume rather than council count.
+- Combined: ~200M boxes per Girl Scout cookie season (verified, see Priority 1 sources).
+- [ ] Energy/water/emissions per box at the bakery level — not publicly disclosed.
 
 ### Distribution legs
-- [ ] Bakery → council distribution warehouse → local troop → customer
+- [ ] Bakery → council distribution warehouse → local troop → customer (depends per council; council mapping in Priority 2 covers this).
 
 ### Carbon footprint
-- [ ] Per-step kg CO₂ (palm oil shipping, cocoa shipping, US ingredient transport, baking, domestic distribution)
-- [ ] Total per box (~0.8 kg target)
+- Estimates from chocolate-coated biscuit LCA (1.81 kg CO₂eq/kg product × 0.255 kg/box) → ~0.46 kg CO₂ baseline per box.
+- With significant overseas palm oil + cocoa, range likely **0.5–0.8 kg per box**.
+- Per-step kg CO₂ — to be calculated by Carbon Interface or Climatiq API at build time once Ryan integrates.
+- Mockup currently uses ~0.8 kg total / 0.85 kg for LA-routed boxes; flagged as estimated until API runs.
 
 ---
 
@@ -113,6 +125,14 @@ Build this *as you go.* Every fact you cite should have a source on this list.
 | Environmental management of confectionery products: Life cycle impacts (ScienceDirect) | [Paper](https://www.sciencedirect.com/science/article/pii/S0959652617330081) | Chocolate-coated biscuit LCA: **1.81 kg CO₂eq/kg of product**. Raw material production accounts for 41–61% of total emissions. Raw materials + manufacturing combined account for 77–97% of total chocolate product impact. | 2026-05-03 |
 | Our Councils (Little Brownie Bakers) | [Page](https://www.littlebrowniebakers.com/our-story/our-council) | Authoritative list of all ~60 Girl Scout councils that contract with Little Brownie Bakers, organized by state | 2026-05-03 |
 | List of councils (Girl Scouts of the USA) (Wikipedia) | [Article](https://en.wikipedia.org/wiki/List_of_councils_(Girl_Scouts_of_the_USA)) | Comprehensive list of all 112 GSUSA councils with state coverage; used to derive ABC Bakers council list by subtraction | 2026-05-03 |
+| ABC Bakers Cookie FAQs | [FAQ page](https://www.abcbakers.com/faqs/) | RSPO certification timeline: 2015–2020 RSPO Credits, 2021 upgrade to Mass Balance, 2022 selling season onward = 100% Mass Balance. Future goal: 100% Segregated. | 2026-05-03 |
+| Source Palm Oil Sustainably (Ferrero Group) | [Page](https://www.ferrero.com/int/en/people-planet/source-our-ingredients-sustainably/palm-oil) | Ferrero (Little Brownie Bakers' parent) sources 96.2% RSPO Segregated palm oil overall, 97% traceable to plantation; ranked #2 of 285 in 2024 WWF Palm Oil Buyers Scorecard | 2026-05-03 |
+| Pacific Northwest peppermint oil production (USDA / Capital Press 2024 article) | [Article](https://capitalpress.com/2024/01/30/usda-mint-production-drops-again/) | 2023 US peppermint oil production: Idaho 1.13M lbs (40%), Oregon 840K lbs (30%), Washington 638K lbs (23%); Pacific NW = ~93% of US peppermint oil | 2026-05-03 |
+| Mint Farming in Washington (HistoryLink.org) | [Article](https://historylink.org/File/20562) | Pacific NW mint production: ~80% of US acreage, ~90% of US mint oil; mint counties in WA + ID detailed | 2026-05-03 |
+| Wheat production in the United States (Wikipedia) | [Article](https://en.wikipedia.org/wiki/Wheat_production_in_the_United_States) | Hard Red Winter wheat (~40% US production, primary bread/cookie flour) grown in Great Plains: Kansas #1, plus Texas/Montana/North Dakota | 2026-05-03 |
+| Soybeans and Oil Crops at a Glance (USDA ERS) | [Page](https://www.ers.usda.gov/topics/crops/soybeans-and-oil-crops/oil-crops-sector-at-a-glance) | 2024 top soybean states: Illinois (record 688M bushels), Iowa, Indiana; Midwest = ~80% of US soybean acreage | 2026-05-03 |
+| Interbake Foods Upgrades Its North Sioux City Plant (Area Development) | [Article](https://www.areadevelopment.com/newsitems/11-13-2014/interbake-foods-production-facility-upgrade-north-sioux-city-south-dakota900135.shtml) | ABC Bakers / Interbake produces 100+ million boxes of Girl Scout cookies annually at North Sioux City, SD facility | 2026-05-03 |
+| Girl Scout cookie shortage at Louisville bakery (NBC News, 2023) | [Article](https://www.nbcnews.com/news/us-news/girl-scout-cookie-shortage-blamed-delays-louisville-kentucky-manufactu-rcna74379) | Little Brownie Bakers Louisville KY facility; LBB is the larger of the two cookie bakeries | 2026-05-03 |
 
 **Already-known sources to include:**
 - Open Supply Hub (opensupplyhub.org)

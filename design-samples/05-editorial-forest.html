@@ -389,7 +389,7 @@
                 <span class="confidence-confirmed font-body text-[10px] font-medium px-2 py-0.5 rounded-full">Confirmed</span>
               </div>
               <p class="font-body text-xs text-charcoal/40 uppercase tracking-wider mb-2">Indonesia & Malaysia → U.S. Port</p>
-              <p class="font-body text-sm text-charcoal/50 leading-relaxed">RSPO Mass Balance certified palm oil. Harvested from plantations, processed at local mills, and shipped across the Pacific by cargo vessel.</p>
+              <p class="font-body text-sm text-charcoal/50 leading-relaxed">RSPO Mass Balance certified palm oil. Both bakeries upgraded to Mass Balance certification by the 2022 selling season; future goal is 100% RSPO Segregated. Harvested from plantations, processed at local mills, then shipped across the Pacific by cargo vessel (~9,500 mi, ~27 days to Long Beach).</p>
               <div class="flex items-center gap-4 mt-3">
                 <span class="font-body text-xs text-moss font-medium">~0.25 kg CO₂</span>
                 <span class="font-body text-xs text-charcoal/30">Cargo Ship</span>
@@ -411,7 +411,7 @@
                 <span class="confidence-confirmed font-body text-[10px] font-medium px-2 py-0.5 rounded-full">Confirmed</span>
               </div>
               <p class="font-body text-xs text-charcoal/40 uppercase tracking-wider mb-2">Ivory Coast & Ghana → U.S. Port</p>
-              <p class="font-body text-sm text-charcoal/50 leading-relaxed">Sourced from World Cocoa Foundation members. West Africa produces ~70% of the world's cocoa. Shipped across the Atlantic.</p>
+              <p class="font-body text-sm text-charcoal/50 leading-relaxed">ABC Bakers states cocoa is sourced from World Cocoa Foundation members. Industry leaders Barry Callebaut and Cargill supply most large bakers; specific GSUSA suppliers aren't publicly disclosed. West Africa produces ~70% of the world's cocoa. Shipped across the Atlantic (~6,500 mi to East Coast US ports).</p>
               <div class="flex items-center gap-4 mt-3">
                 <span class="font-body text-xs text-moss font-medium">~0.20 kg CO₂</span>
                 <span class="font-body text-xs text-charcoal/30">Cargo Ship</span>
@@ -433,7 +433,7 @@
                 <span class="confidence-estimated font-body text-[10px] font-medium px-2 py-0.5 rounded-full">Estimated ~</span>
               </div>
               <p class="font-body text-xs text-charcoal/40 uppercase tracking-wider mb-2">U.S. Midwest & Pacific NW → Bakery</p>
-              <p class="font-body text-sm text-charcoal/50 leading-relaxed">Domestic ingredients. Sugar beet and wheat from the heartland, peppermint oil from Oregon. Transported by truck and rail.</p>
+              <p class="font-body text-sm text-charcoal/50 leading-relaxed">Domestic ingredients. Sugar from US sugar beets (top states: Minnesota, North Dakota, Idaho, Michigan), wheat from the Midwest, peppermint oil from the Pacific Northwest — Idaho is the #1 producer (~40% of US peppermint oil), followed by Oregon (~30%) and Washington (~23%). Transported by truck and rail.</p>
               <div class="flex items-center gap-4 mt-3">
                 <span class="font-body text-xs text-moss font-medium">~0.10 kg CO₂</span>
                 <span class="font-body text-xs text-charcoal/30">Truck & Rail</span>
@@ -697,13 +697,36 @@
           <div>
             <label class="font-body text-xs font-medium text-charcoal/40 uppercase tracking-wider block mb-3">Your Girl Scout Council</label>
             <select class="w-full bg-sand border border-sandDark rounded-xl px-4 py-3.5 font-body text-sm outline-none focus:border-clay transition-colors">
-              <option>Choose your council...</option>
-              <option>Girl Scouts of Greater Los Angeles</option>
-              <option>Girl Scouts Heart of the South</option>
-              <option>Girl Scouts of Kentuckiana</option>
+              <option>Choose your council... (sample of 18 of 112)</option>
+              <optgroup label="Little Brownie Bakers (Louisville, KY)">
+                <option selected>Girl Scouts of Greater Los Angeles (CA)</option>
+                <option>Girl Scouts of Greater New York (NY)</option>
+                <option>Girl Scouts of Greater Atlanta (GA)</option>
+                <option>Girl Scouts of Western Washington (WA)</option>
+                <option>Girl Scouts Heart of the South (TN/AR/MS)</option>
+                <option>Girl Scouts of Kentuckiana (KY)</option>
+                <option>Girl Scouts of Colorado (CO)</option>
+                <option>Girl Scouts of Connecticut (CT)</option>
+                <option>Girl Scouts of Tropical Florida (FL)</option>
+                <option>Girl Scouts of the Southern Appalachians (TN)</option>
+              </optgroup>
+              <optgroup label="ABC Bakers (North Sioux City, SD)">
+                <option>Girl Scouts of Utah (UT)</option>
+                <option>Girl Scouts of Northern California (CA)</option>
+                <option>Girl Scouts of Citrus (FL)</option>
+                <option>Girl Scouts San Diego (CA)</option>
+                <option>Girl Scouts Spirit of Nebraska (NE)</option>
+                <option>Girl Scouts of MN/WI Lakes and Pines (MN)</option>
+                <option>Girl Scouts of Texas Oklahoma Plains (TX)</option>
+                <option>Girl Scouts of Maine (ME)</option>
+              </optgroup>
             </select>
 
             <div class="mt-8 space-y-4">
+              <div class="flex items-center justify-between py-2 border-b border-sandDark">
+                <span class="font-body text-sm text-charcoal/40">Your council HQ</span>
+                <span class="font-display font-600 text-sm text-earth">Los Angeles, CA</span>
+              </div>
               <div class="flex items-center justify-between py-2 border-b border-sandDark">
                 <span class="font-body text-sm text-charcoal/40">Your bakery</span>
                 <span class="font-display font-600 text-sm text-earth">Little Brownie Bakers</span>
@@ -714,7 +737,7 @@
               </div>
               <div class="flex items-center justify-between py-2">
                 <span class="font-body text-sm text-charcoal/40">Shipping distance</span>
-                <span class="font-display font-600 text-sm text-ocean">~1,200 miles</span>
+                <span class="font-display font-600 text-sm text-ocean">~2,100 miles</span>
               </div>
             </div>
           </div>
@@ -722,12 +745,13 @@
           <div class="flex flex-col items-center justify-center">
             <div class="w-48 h-48 rounded-full bg-sand border-4 border-clay/20 flex flex-col items-center justify-center">
               <p class="font-body text-xs text-clay uppercase tracking-wider font-medium">Your footprint</p>
-              <p class="font-display font-900 text-5xl text-earth mt-1">0.82</p>
+              <p class="font-display font-900 text-5xl text-earth mt-1">~0.85</p>
               <p class="font-body text-xs text-charcoal/40">kg CO₂ per box</p>
             </div>
-            <p class="font-body text-xs text-charcoal/30 mt-6 text-center max-w-48">
-              In Kentucky: 0.76 kg<br>
-              In California: 0.88 kg
+            <p class="font-body text-xs text-charcoal/30 mt-6 text-center max-w-56">
+              In Kentucky: ~0.74 kg<br>
+              In California: ~0.85 kg<br>
+              <span class="text-clay/70">(domestic shipping varies; overseas ingredient legs are the same)</span>
             </p>
           </div>
         </div>
