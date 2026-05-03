@@ -3,9 +3,9 @@
 **Project:** The Hidden Journey — Where Your Stuff Really Comes From
 **Type:** Girl Scout Gold Award Project
 **Created by:** Mia
-**Developer:** Ryan (first-year CS student, using Claude Code learning mode)
+**Developers:** Mia (frontend — pages and components, with Claude Code) and Ryan (first-year CS student — infrastructure, logic, and data wiring, with Claude Code learning mode)
 **Date:** March 29, 2026
-**Last Updated:** March 29, 2026 (post-Q&A revision)
+**Last Updated:** May 3, 2026 (booth-education framing + developer split update)
 
 ---
 
@@ -17,9 +17,9 @@ The Hidden Journey is an educational website that shows people the global supply
 
 ## 2. Why Does This Project Exist?
 
-Most people have no idea how many countries, workers, and miles are involved in making the products they use every day. A single Girl Scout cookie touches six countries before it reaches your doorstep. This project makes that invisible journey visible.
+A single Girl Scout cookie touches six countries before it reaches a customer's hands, and most of the people behind every ingredient and process never get acknowledged. This project gives Scouts the full picture of what they're selling — so when a customer at a booth asks "where does this come from?" or "is this sustainable?", a Scout can answer with real, accurate information instead of a memorized pitch.
 
-This also fulfills the Girl Scout Gold Award requirement: a sustainable, community-impacting project that demonstrates leadership.
+The site is built for Scouts (the people doing the selling) and for the customers and community members they sell to. It also fulfills the Girl Scout Gold Award requirement: a sustainable, community-impacting project that demonstrates leadership.
 
 ---
 
@@ -51,13 +51,13 @@ Three featured products, each with a full supply chain story:
 - Ingredient sourcing confidence levels:
   - **Confirmed:** Palm oil (Indonesia/Malaysia, RSPO certified), Cocoa (West Africa, World Cocoa Foundation)
   - **Estimated:** Sugar (~U.S. Midwest), Flour (~U.S. Midwest wheat), Peppermint oil (~Pacific NW)
-- Ethics angle: The Olivia Chaffin story — a Tennessee Girl Scout who researched the "mixed" label on her cookie box's palm oil sourcing and launched a petition that got national attention. **This will be original content written by Mia** (the emotional centerpiece of the project)
+- Ethics angle: The Olivia Chaffin story — a Tennessee Girl Scout who researched the "mixed" label on her cookie box's palm oil sourcing and started a national conversation about transparency in food supply chains. **This is original content written by Mia** (the emotional centerpiece of the project)
 
 **Product 2 — Girl Scout Vest**
 - Journey: Cotton farming (India/China/U.S.) → Textile production & dyeing (Asia) → Sewing & assembly → Shipping → Retail
-- The vest is actually made in the USA from recycled polyester — a positive sustainability story that contrasts with the cookies
+- The vest is made or assembled in the USA, with a fabric blend that includes recycled polyester from plastic bottles — a different sustainability story from the cookies
 - Carbon footprint: ~10 kg CO₂ per vest
-- Ethics angle: "Made in USA" as a supply chain choice — what does domestic production mean for transparency and labor?
+- Ethics angle: What "Made in USA" actually means for workers and transparency, and what's covered by the label vs. the underlying materials
 
 **Product 3 — Cookie Box (Packaging)**
 - Journey: Pulp sourcing → Paper mill → Printing → Assembly → Filled at bakery
@@ -138,10 +138,10 @@ A 10-question quiz that visitors can take after exploring the site. Passing earn
 
 Explain why understanding supply chains is important. Four key themes:
 
-1. **Environmental Impact** — Global freight produces ~7% of all greenhouse gas emissions
-2. **Labor & Human Rights** — Supply chains can hide child labor and unsafe conditions
-3. **Global Cooperation** — One cookie connects workers across six countries
-4. **Consumer Power** — Informed consumers can push brands toward better practices
+1. **Environmental Impact** — Every product has a footprint; understanding it lets Scouts talk about it accurately
+2. **Labor & Human Rights** — Real people grow and make every ingredient; knowing about them is part of respecting the work
+3. **Global Cooperation** — One cookie connects workers across six countries — Scouts who understand this can tell that story confidently
+4. **Consumer Power** — When a Scout knows what they're selling, they can answer customer questions honestly, and that builds the kind of trust that actually moves cookies
 
 ### 4.4 Sources
 
@@ -162,11 +162,11 @@ All data sources must be free and publicly accessible. Confirmed sources:
 
 ### 5.1 Supply Chain Facts to Get Right
 
-- Both Girl Scout cookie bakeries are foreign-owned (Ferrero is Italian, Weston Foods is Canadian)
-- All cookies use RSPO "Mass Balance" palm oil — this certification level still has links to deforestation and labor concerns
+- Both Girl Scout cookie bakeries are owned by international parent companies (Ferrero is Italian, Weston Foods is Canadian)
+- All cookies use RSPO "Mass Balance" palm oil — a certification system worth understanding so Scouts can accurately explain what "sustainable" means on the box
 - Palm oil sourced from Indonesia and Malaysia
 - Cocoa sourced from West Africa (Ivory Coast and Ghana produce ~70% of world supply)
-- The vest is a positive counterpoint — made in the USA from recycled polyester
+- The vest is a different sustainability story from the cookies — made or assembled in the USA, including a portion of recycled polyester from plastic bottles
 - Olivia Chaffin's story is the emotional centerpiece of the project
 
 ### 5.2 Carbon Data Approach
@@ -259,7 +259,7 @@ Each entry in the question pool (`questions.json`) follows this structure:
 
 ### 8.1 Visual Design (TBD)
 
-Visual style to be determined. Two to three sample HTML layouts will be generated using the `/frontend-design` skill with Tailwind CSS, based on this PRD, for Mia to choose from before implementation begins.
+Visual style to be determined. Ryan generates two to three sample HTML layouts using the `/frontend-design` skill with Tailwind CSS, based on this PRD. Mia picks one and applies it across her pages and components as she builds them.
 
 Design priorities:
 - Engaging and visual for ages 10–18 (not dry or academic)

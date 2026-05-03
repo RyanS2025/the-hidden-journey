@@ -10,9 +10,9 @@
 
 ## Hero tagline options 
 
-- The Crumb Trail of a Girl Scout cookie.
+- The Crumb Trail of a Girl Scout Cookie.
 
 
 ## Intro paragraph
 
-Girl Scout cookies travel a long way before they get to your booth. The palm oil came from somewhere. The cotton in your vest grew on a farm. The recycled paperboard in the box used to be something else entirely. This site is about tracing those hidden journeys — so the next time you're at a booth and someone asks, "are these sustainable?" or "where does this come from?", you can answer with real information you actually understand. Knowing the full story of what you're selling is one of the best things a Scout can do.
+Girl Scout cookies come with a much longer backstory than the label lets on. The palm oil was grown somewhere. The cotton in your vest started out in a field. The paperboard box had a whole previous life before it got recycled. This site is about tracing those hidden journeys, so the next time someone at a booth asks "are these really sustainable?" you'll actually know. Understanding what you're selling — all of it — is one of the most important things a Scout can do.
