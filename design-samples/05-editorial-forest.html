@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Hidden Journey — Editorial Forest</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700;900&ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            earth: '#1B4332',
+            earthLight: '#2D6A4F',
+            sand: '#FDF8F0',
+            sandDark: '#F5EBE0',
+            clay: '#D4553A',
+            clayLight: '#E07B5C',
+            moss: '#40916C',
+            mossLight: '#95D5B2',
+            ocean: '#2980B9',
+            charcoal: '#1C1C1C',
+            sage: '#95D5B2',
+            sagePale: '#D8F3DC',
+            sageTint: '#EEF6E8',
+          },
+          fontFamily: {
+            display: ['Fraunces', 'serif'],
+            body: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background: #EEF6E8; color: #1C1C1C; }
+
+    .organic-blob {
+      border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+    }
+
+    .editorial-line {
+      width: 60px;
+      height: 3px;
+      background: #D4553A;
+    }
+
+    .step-card {
+      background: white;
+      border: 1px solid #F5EBE0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .step-card:hover {
+      border-color: #D4553A;
+      box-shadow: 0 20px 40px -12px rgba(27, 67, 50, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .confidence-confirmed {
+      background: #40916C15;
+      color: #2D6A4F;
+      border: 1px solid #40916C33;
+    }
+    .confidence-estimated {
+      background: #D4553A15;
+      color: #D4553A;
+      border: 1px solid #D4553A33;
+    }
+
+    @keyframes gentleRise {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes expandWidth {
+      from { width: 0; }
+      to { width: var(--target-width); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .animate-rise { animation: gentleRise 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+
+    .hero-bg {
+      background:
+        radial-gradient(ellipse at 70% 20%, #40916C11 0%, transparent 50%),
+        radial-gradient(ellipse at 30% 70%, #D4553A08 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, #2980B905 0%, transparent 70%);
+    }
+
+    .quote-mark {
+      font-size: 8rem;
+      line-height: 0;
+      color: #D4553A22;
+      font-family: 'Fraunces', serif;
+    }
+
+    nav a {
+      position: relative;
+      color: #1C1C1C88;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #D4553A; }
+
+    .carbon-ring {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: conic-gradient(
+        #40916C 0% 35%,
+        #2980B9 35% 65%,
+        #D4553A 65% 85%,
+        #D4553A88 85% 100%
+      );
+      position: relative;
+    }
+    .carbon-ring::after {
+      content: '';
+      position: absolute;
+      inset: 20px;
+      border-radius: 50%;
+      background: white;
+    }
+
+    .category-chip {
+      background: white;
+      border: 1.5px solid #F5EBE0;
+      transition: all 0.3s;
+    }
+    .category-chip:hover {
+      border-color: #D4553A;
+      background: #D4553A08;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(212, 85, 58, 0.1);
+    }
+
+    .product-tile {
+      background: white;
+      border: 1px solid #F5EBE0;
+      transition: all 0.4s;
+    }
+    .product-tile:hover {
+      box-shadow: 0 12px 30px -8px rgba(27, 67, 50, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .divider-botanical {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .divider-botanical::before,
+    .divider-botanical::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #F5EBE0;
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 bg-sand/90 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="font-display font-700 text-lg text-earth tracking-tight flex items-center gap-2.5">
+        <svg width="26" height="26" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-label="Trefoil">
+          <circle cx="16" cy="9" r="6.5" fill="#40916C"/>
+          <circle cx="9" cy="20" r="6.5" fill="#40916C"/>
+          <circle cx="23" cy="20" r="6.5" fill="#40916C"/>
+          <circle cx="16" cy="17" r="2.5" fill="#1B4332"/>
+        </svg>
+        The Hidden Journey
+      </a>
+      <div class="hidden md:flex items-center gap-7 font-body text-sm font-medium">
+        <a href="#products">Products</a>
+        <a href="#explore">Explore</a>
+        <a href="#calculator">Calculator</a>
+        <a href="#why">Why It Matters</a>
+        <a href="#olivia">Olivia</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#sources">Sources</a>
+      </div>
+      <button class="md:hidden text-earth">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="min-h-screen flex items-center px-6 pt-16 hero-bg relative overflow-hidden">
+    <!-- Organic blobs -->
+    <div class="absolute -top-20 -right-20 w-96 h-96 organic-blob bg-moss/5"></div>
+    <div class="absolute -bottom-32 -left-20 w-80 h-80 organic-blob bg-clay/5"></div>
+
+    <!-- Trefoil watermark -->
+    <svg class="absolute top-12 right-12 opacity-[0.06] hidden md:block" width="320" height="320" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="16" cy="9" r="6.5" fill="#1B4332"/>
+      <circle cx="9" cy="20" r="6.5" fill="#1B4332"/>
+      <circle cx="23" cy="20" r="6.5" fill="#1B4332"/>
+    </svg>
+
+    <div class="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center relative z-10">
+      <div>
+        <div class="editorial-line mb-8 animate-rise"></div>
+
+        <p class="font-body text-sm font-medium text-clay tracking-wider uppercase mb-4" style="animation: gentleRise 0.8s ease 0.1s both">
+          Girl Scout Gold Award Project
+        </p>
+
+        <h1 class="font-display font-900 text-5xl md:text-6xl lg:text-7xl leading-[1.05] text-earth mb-6" style="animation: gentleRise 0.8s ease 0.2s both">
+          The Hidden<br>Journey
+        </h1>
+
+        <p class="font-display text-xl md:text-2xl text-charcoal/50 italic font-400 mb-4" style="animation: gentleRise 0.8s ease 0.3s both">
+          The Crumb Trail of a Girl Scout Cookie
+        </p>
+
+        <p class="font-body text-base text-charcoal/60 leading-relaxed max-w-md mb-10" style="animation: gentleRise 0.8s ease 0.4s both">
+          Girl Scout cookies come with a much longer backstory than the label lets on. The palm oil was grown somewhere. The cocoa traveled across an ocean. The sugar, the flour, the box, even the truck that delivered them — every piece has a backstory. This site is about tracing those hidden journeys, so the next time someone at a booth asks "are these really sustainable?" you'll actually know.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4" style="animation: gentleRise 0.8s ease 0.5s both">
+          <a href="#products" class="inline-flex items-center justify-center bg-earth text-sand font-body font-semibold text-sm px-8 py-3.5 rounded-full hover:bg-earthLight transition-colors">
+            Explore the Journey
+          </a>
+          <a href="#olivia" class="inline-flex items-center justify-center font-body font-medium text-sm text-clay hover:text-clayLight transition-colors gap-1.5">
+            Read Olivia's Story
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5"><path d="m6 12 4-4-4-4"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero visual: Journey preview -->
+      <div class="hidden lg:block" style="animation: gentleRise 0.8s ease 0.6s both">
+        <div class="relative">
+          <!-- Stacked cards showing journey -->
+          <div class="space-y-3">
+            <div class="step-card rounded-2xl p-5 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-moss/10 flex items-center justify-center shrink-0">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B4332" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V11"/><path d="M12 11C12 11 8 7 4 8c1 1 3 3 8 3"/><path d="M12 11c0 0 4-4 8-3-1 1-3 3-8 3"/><path d="M12 11C12 11 9 6 6 5c1 2 3 4 6 6"/><path d="M12 11c0 0 3-5 6-6-1 2-3 4-6 6"/></svg>
+              </div>
+              <div>
+                <p class="font-display font-600 text-sm">Palm Oil</p>
+                <p class="font-body text-xs text-charcoal/40">Indonesia & Malaysia</p>
+              </div>
+              <span class="ml-auto font-body text-xs text-moss font-medium">9,400 mi</span>
+            </div>
+            <div class="step-card rounded-2xl p-5 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-clay/10 flex items-center justify-center shrink-0">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4553A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="13" rx="5" ry="8"/><path d="M12 5v16M9 7v12M15 7v12"/><path d="M12 5l-1-2"/></svg>
+              </div>
+              <div>
+                <p class="font-display font-600 text-sm">Cocoa</p>
+                <p class="font-body text-xs text-charcoal/40">Ivory Coast & Ghana</p>
+              </div>
+              <span class="ml-auto font-body text-xs text-moss font-medium">5,800 mi</span>
+            </div>
+            <div class="step-card rounded-2xl p-5 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-ocean/10 flex items-center justify-center shrink-0">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2980B9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V8"/><path d="M12 8c-2-1-3-3-3-5 2 0 3 1 3 3"/><path d="M12 8c2-1 3-3 3-5-2 0-3 1-3 3"/><path d="M12 12c-2-1-4-2-5-4 2 0 4 1 5 3"/><path d="M12 12c2-1 4-2 5-4-2 0-4 1-5 3"/><path d="M12 16c-2-1-4-2-5-4 2 0 4 1 5 3"/><path d="M12 16c2-1 4-2 5-4-2 0-4 1-5 3"/></svg>
+              </div>
+              <div>
+                <p class="font-display font-600 text-sm">Sugar, Flour, Peppermint</p>
+                <p class="font-body text-xs text-charcoal/40">U.S. Midwest & Pacific NW</p>
+              </div>
+              <span class="ml-auto font-body text-xs text-moss font-medium">800 mi</span>
+            </div>
+            <div class="step-card rounded-2xl p-5 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-earth/10 flex items-center justify-center shrink-0">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B4332" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V11l5 3V11l5 3V8l4 2v11"/><path d="M9 17h2M13 17h2M17 17h0"/></svg>
+              </div>
+              <div>
+                <p class="font-display font-600 text-sm">Baking</p>
+                <p class="font-body text-xs text-charcoal/40">South Dakota or Kentucky</p>
+              </div>
+              <span class="ml-auto font-body text-xs text-clay font-medium">~0.8 kg CO₂</span>
+            </div>
+            <div class="step-card rounded-2xl p-5 flex items-center gap-4 border-clay/30 bg-clay/5">
+              <div class="w-12 h-12 rounded-full bg-clay/20 flex items-center justify-center shrink-0">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4553A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+              </div>
+              <div>
+                <p class="font-display font-600 text-sm">Your Doorstep</p>
+                <p class="font-body text-xs text-charcoal/40">Distribution varies by council</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo strip — Scout life -->
+  <section class="px-6 pt-16 pb-4">
+    <div class="max-w-5xl mx-auto">
+      <p class="font-body text-xs font-medium text-clay tracking-wider uppercase mb-6 text-center">From the Booth · Scrapbook</p>
+      <div class="grid grid-cols-3 gap-3 md:gap-6">
+        <div class="aspect-square bg-gradient-to-br from-moss/20 via-mossLight/30 to-sage/40 border border-moss/40 rounded-2xl shadow-md flex flex-col items-center justify-center p-4 text-center md:rotate-[-2deg] hover:rotate-0 transition-transform">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1B4332" stroke-width="1.5" class="mb-2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
+          <p class="font-display font-600 text-xs md:text-sm text-earth">Scout at booth</p>
+          <p class="font-body text-[10px] md:text-xs text-charcoal/50 mt-0.5">Photo placeholder</p>
+        </div>
+        <div class="aspect-square bg-gradient-to-br from-clay/20 via-clayLight/25 to-mossLight/30 border border-clay/40 rounded-2xl shadow-md flex flex-col items-center justify-center p-4 text-center hover:scale-[1.02] transition-transform">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1B4332" stroke-width="1.5" class="mb-2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
+          <p class="font-display font-600 text-xs md:text-sm text-earth">Cookie variety table</p>
+          <p class="font-body text-[10px] md:text-xs text-charcoal/50 mt-0.5">Photo placeholder</p>
+        </div>
+        <div class="aspect-square bg-gradient-to-br from-sageTint via-sage/30 to-moss/30 border border-moss/40 rounded-2xl shadow-md flex flex-col items-center justify-center p-4 text-center md:rotate-[2deg] hover:rotate-0 transition-transform">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1B4332" stroke-width="1.5" class="mb-2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
+          <p class="font-display font-600 text-xs md:text-sm text-earth">Cookie boxes</p>
+          <p class="font-body text-[10px] md:text-xs text-charcoal/50 mt-0.5">Photo placeholder</p>
+        </div>
+      </div>
+      <p class="font-body text-xs text-charcoal/40 italic text-center mt-4">Drop in your own photos here, or licensed Creative Commons images</p>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="py-24 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="max-w-2xl mb-16">
+        <div class="editorial-line mb-6"></div>
+        <h2 class="font-display font-700 text-4xl md:text-5xl text-earth mb-4">Product Deep Dives</h2>
+        <p class="font-body text-charcoal/50 leading-relaxed">Three Girl Scout products you know and love — traced from raw materials to your hands, with carbon footprints at every step.</p>
+      </div>
+
+      <!-- Thin Mint Deep Dive -->
+      <div class="bg-white rounded-3xl border border-sandDark p-8 md:p-12 mb-8">
+        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-10">
+          <div>
+            <p class="font-body text-xs font-medium text-clay tracking-wider uppercase mb-2">Featured Product</p>
+            <h3 class="font-display font-700 text-3xl md:text-4xl text-earth">Thin Mint Cookie</h3>
+            <p class="font-body text-charcoal/50 mt-2 max-w-lg">Before this cookie reaches your booth, its ingredients have crossed oceans and traveled thousands of miles. Here's the full story.</p>
+          </div>
+          <div class="shrink-0 text-center">
+            <div class="carbon-ring mx-auto mb-3">
+              <div class="absolute inset-0 flex items-center justify-center z-10">
+                <div>
+                  <p class="font-display font-700 text-2xl text-earth">~0.8</p>
+                  <p class="font-body text-[10px] text-charcoal/40">kg CO₂/box</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center justify-center gap-4 font-body text-[10px]">
+              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-moss"></span> Farming 35%</span>
+              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-ocean"></span> Shipping 30%</span>
+              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-clay"></span> Mfg 20%</span>
+              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-clayLight"></span> Dist 15%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Journey Timeline -->
+        <div class="space-y-0">
+          <!-- Step 1 -->
+          <div class="flex gap-6 pb-10 relative">
+            <div class="flex flex-col items-center shrink-0">
+              <div class="w-10 h-10 rounded-full bg-moss/15 border-2 border-moss flex items-center justify-center">
+                <div class="w-2.5 h-2.5 rounded-full bg-moss"></div>
+              </div>
+              <div class="w-0.5 flex-1 bg-gradient-to-b from-moss/30 to-ocean/30 mt-2"></div>
+            </div>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <h4 class="font-display font-600 text-lg text-earth">Palm Oil</h4>
+                <span class="confidence-confirmed font-body text-[10px] font-medium px-2 py-0.5 rounded-full">Confirmed</span>
+              </div>
+              <p class="font-body text-xs text-charcoal/40 uppercase tracking-wider mb-2">Indonesia & Malaysia → U.S. Port</p>
+              <p class="font-body text-sm text-charcoal/50 leading-relaxed">RSPO Mass Balance certified palm oil. Harvested from plantations, processed at local mills, and shipped across the Pacific by cargo vessel.</p>
+              <div class="flex items-center gap-4 mt-3">
+                <span class="font-body text-xs text-moss font-medium">~0.25 kg CO₂</span>
+                <span class="font-body text-xs text-charcoal/30">Cargo Ship</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="flex gap-6 pb-10 relative">
+            <div class="flex flex-col items-center shrink-0">
+              <div class="w-10 h-10 rounded-full bg-clay/15 border-2 border-clay flex items-center justify-center">
+                <div class="w-2.5 h-2.5 rounded-full bg-clay"></div>
+              </div>
+              <div class="w-0.5 flex-1 bg-gradient-to-b from-ocean/30 to-clay/30 mt-2"></div>
+            </div>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <h4 class="font-display font-600 text-lg text-earth">Cocoa</h4>
+                <span class="confidence-confirmed font-body text-[10px] font-medium px-2 py-0.5 rounded-full">Confirmed</span>
+              </div>
+              <p class="font-body text-xs text-charcoal/40 uppercase tracking-wider mb-2">Ivory Coast & Ghana → U.S. Port</p>
+              <p class="font-body text-sm text-charcoal/50 leading-relaxed">Sourced from World Cocoa Foundation members. West Africa produces ~70% of the world's cocoa. Shipped across the Atlantic.</p>
+              <div class="flex items-center gap-4 mt-3">
+                <span class="font-body text-xs text-moss font-medium">~0.20 kg CO₂</span>
+                <span class="font-body text-xs text-charcoal/30">Cargo Ship</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="flex gap-6 pb-10 relative">
+            <div class="flex flex-col items-center shrink-0">
+              <div class="w-10 h-10 rounded-full bg-ocean/15 border-2 border-ocean flex items-center justify-center">
+                <div class="w-2.5 h-2.5 rounded-full bg-ocean"></div>
+              </div>
+              <div class="w-0.5 flex-1 bg-gradient-to-b from-clay/30 to-earth/30 mt-2"></div>
+            </div>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <h4 class="font-display font-600 text-lg text-earth">Sugar, Flour & Peppermint</h4>
+                <span class="confidence-estimated font-body text-[10px] font-medium px-2 py-0.5 rounded-full">Estimated ~</span>
+              </div>
+              <p class="font-body text-xs text-charcoal/40 uppercase tracking-wider mb-2">U.S. Midwest & Pacific NW → Bakery</p>
+              <p class="font-body text-sm text-charcoal/50 leading-relaxed">Domestic ingredients. Sugar beet and wheat from the heartland, peppermint oil from Oregon. Transported by truck and rail.</p>
+              <div class="flex items-center gap-4 mt-3">
+                <span class="font-body text-xs text-moss font-medium">~0.10 kg CO₂</span>
+                <span class="font-body text-xs text-charcoal/30">Truck & Rail</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="flex gap-6 pb-10 relative">
+            <div class="flex flex-col items-center shrink-0">
+              <div class="w-10 h-10 rounded-full bg-earth/15 border-2 border-earth flex items-center justify-center">
+                <div class="w-2.5 h-2.5 rounded-full bg-earth"></div>
+              </div>
+              <div class="w-0.5 flex-1 bg-gradient-to-b from-earth/30 to-charcoal/10 mt-2"></div>
+            </div>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <h4 class="font-display font-600 text-lg text-earth">Baking</h4>
+                <span class="confidence-confirmed font-body text-[10px] font-medium px-2 py-0.5 rounded-full">Confirmed</span>
+              </div>
+              <p class="font-body text-xs text-charcoal/40 uppercase tracking-wider mb-2">North Sioux City, SD or Louisville, KY</p>
+              <p class="font-body text-sm text-charcoal/50 leading-relaxed">
+                <strong>ABC Bakers</strong> (North Sioux City, SD) and <strong>Little Brownie Bakers</strong> (Louisville, KY) are the two licensed bakeries behind every Girl Scout cookie in America. Both are owned by international parent companies — Weston Foods of Canada and Ferrero of Italy.
+              </p>
+              <div class="flex items-center gap-4 mt-3">
+                <span class="font-body text-xs text-moss font-medium">~0.15 kg CO₂</span>
+                <span class="font-body text-xs text-charcoal/30">Manufacturing</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="flex gap-6">
+            <div class="flex flex-col items-center shrink-0">
+              <div class="w-10 h-10 rounded-full bg-clay/20 border-2 border-clay flex items-center justify-center">
+                <div class="w-2.5 h-2.5 rounded-full bg-clay"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <h4 class="font-display font-600 text-lg text-earth">Your Doorstep</h4>
+                <span class="font-body text-[10px] font-medium px-2 py-0.5 rounded-full bg-ocean/10 text-ocean border border-ocean/30">Varies by location</span>
+              </div>
+              <p class="font-body text-xs text-charcoal/40 uppercase tracking-wider mb-2">Bakery → Council → You</p>
+              <p class="font-body text-sm text-charcoal/50 leading-relaxed">The final leg depends on which of the 112 Girl Scout councils serves your area. Check the calculator below to see your footprint.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other Cookie Varieties -->
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="product-tile rounded-2xl p-8 cursor-pointer group flex items-center gap-6">
+          <div class="shrink-0">
+            <svg width="80" height="80" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="17" fill="#A0612D"/>
+              <circle cx="20" cy="20" r="6" fill="#FDF8F0"/>
+              <path d="M10 14 Q20 12 30 14" stroke="#3D1F0F" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              <path d="M9 22 Q20 20 31 22" stroke="#3D1F0F" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              <path d="M11 27 Q20 25 29 27" stroke="#3D1F0F" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="flex-1">
+            <p class="font-body text-xs font-medium text-clay tracking-wider uppercase mb-2">Cookie 02</p>
+            <h3 class="font-display font-700 text-2xl text-earth group-hover:text-clay transition-colors mb-2">Samoas</h3>
+            <p class="font-body text-sm text-charcoal/50 leading-relaxed mb-3">Caramel + coconut + chocolate. Coconut sourced from Southeast Asia adds another supply-chain layer beyond the Thin Mint's.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-display font-600 text-lg text-moss">~0.9 kg CO₂</span>
+              <span class="font-body text-sm text-clay group-hover:translate-x-1 transition-transform">Read more →</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-tile rounded-2xl p-8 cursor-pointer group flex items-center gap-6">
+          <div class="shrink-0">
+            <svg width="80" height="80" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="17" fill="#3D1F0F"/>
+              <circle cx="20" cy="20" r="13" fill="none" stroke="#5D2F1F" stroke-width="0.5"/>
+              <ellipse cx="20" cy="16" rx="7" ry="5" fill="#C8A370" opacity="0.7"/>
+              <circle cx="17" cy="15" r="0.8" fill="#8B5A2B" opacity="0.5"/>
+              <circle cx="22" cy="16" r="0.8" fill="#8B5A2B" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="flex-1">
+            <p class="font-body text-xs font-medium text-clay tracking-wider uppercase mb-2">Cookie 03</p>
+            <h3 class="font-display font-700 text-2xl text-earth group-hover:text-clay transition-colors mb-2">Tagalongs</h3>
+            <p class="font-body text-sm text-charcoal/50 leading-relaxed mb-3">Chocolate-coated peanut butter. Peanuts from the U.S. South, cocoa from West Africa — a transatlantic combo.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-display font-600 text-lg text-moss">~0.85 kg CO₂</span>
+              <span class="font-body text-sm text-clay group-hover:translate-x-1 transition-transform">Read more →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore -->
+  <section id="explore" class="py-24 px-6 bg-sagePale">
+    <div class="max-w-5xl mx-auto">
+      <div class="max-w-2xl mb-12">
+        <div class="editorial-line mb-6"></div>
+        <h2 class="font-display font-700 text-4xl md:text-5xl text-earth mb-4">The Cookie Lineup</h2>
+        <p class="font-body text-charcoal/50">Every Girl Scout cookie you can sell, traced from raw ingredients to your booth. Click any cookie to see its full journey.</p>
+      </div>
+
+      <!-- Search -->
+      <div class="bg-white rounded-2xl border border-sandDark p-2 flex items-center mb-10">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#D4553A" stroke-width="2" class="ml-3 shrink-0"><circle cx="9" cy="9" r="7"/><path d="m16 16-3.5-3.5"/></svg>
+        <input type="text" placeholder="Search cookies..." class="flex-1 bg-transparent font-body text-base px-3 py-3 outline-none placeholder:text-charcoal/25">
+      </div>
+
+      <!-- Cookie Grid (9 varieties) -->
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
+        <!-- Thin Mints -->
+        <div class="product-tile rounded-2xl p-5 cursor-pointer text-center group">
+          <svg viewBox="0 0 40 40" class="w-16 h-16 mx-auto mb-3" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="17" fill="#2D1810"/>
+            <circle cx="20" cy="20" r="13" fill="none" stroke="#4F3520" stroke-width="0.5"/>
+            <circle cx="14" cy="14" r="1" fill="#95D5B2"/>
+            <circle cx="26" cy="14" r="1" fill="#95D5B2"/>
+            <circle cx="20" cy="26" r="1" fill="#95D5B2"/>
+            <circle cx="13" cy="22" r="0.7" fill="#95D5B2"/>
+            <circle cx="27" cy="22" r="0.7" fill="#95D5B2"/>
+            <circle cx="20" cy="13" r="0.7" fill="#95D5B2"/>
+          </svg>
+          <h4 class="font-display font-600 text-sm text-earth group-hover:text-clay transition-colors">Thin Mints</h4>
+          <p class="font-body text-[11px] text-charcoal/40 mt-1">6 countries · ~0.8 kg CO₂</p>
+        </div>
+
+        <!-- Samoas -->
+        <div class="product-tile rounded-2xl p-5 cursor-pointer text-center group">
+          <svg viewBox="0 0 40 40" class="w-16 h-16 mx-auto mb-3" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="17" fill="#A0612D"/>
+            <circle cx="20" cy="20" r="6" fill="#FDF8F0"/>
+            <path d="M10 14 Q20 12 30 14" stroke="#3D1F0F" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <path d="M9 22 Q20 20 31 22" stroke="#3D1F0F" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <path d="M11 27 Q20 25 29 27" stroke="#3D1F0F" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </svg>
+          <h4 class="font-display font-600 text-sm text-earth group-hover:text-clay transition-colors">Samoas</h4>
+          <p class="font-body text-[11px] text-charcoal/40 mt-1">7 countries · ~0.9 kg CO₂</p>
+        </div>
+
+        <!-- Tagalongs -->
+        <div class="product-tile rounded-2xl p-5 cursor-pointer text-center group">
+          <svg viewBox="0 0 40 40" class="w-16 h-16 mx-auto mb-3" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="17" fill="#3D1F0F"/>
+            <circle cx="20" cy="20" r="13" fill="none" stroke="#5D2F1F" stroke-width="0.5"/>
+            <ellipse cx="20" cy="16" rx="7" ry="5" fill="#C8A370" opacity="0.75"/>
+            <circle cx="17" cy="15" r="0.8" fill="#8B5A2B" opacity="0.5"/>
+            <circle cx="22" cy="16" r="0.8" fill="#8B5A2B" opacity="0.5"/>
+          </svg>
+          <h4 class="font-display font-600 text-sm text-earth group-hover:text-clay transition-colors">Tagalongs</h4>
+          <p class="font-body text-[11px] text-charcoal/40 mt-1">5 countries · ~0.85 kg CO₂</p>
+        </div>
+
+        <!-- Do-si-dos -->
+        <div class="product-tile rounded-2xl p-5 cursor-pointer text-center group">
+          <svg viewBox="0 0 40 40" class="w-16 h-16 mx-auto mb-3" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="17" fill="#D4A56A"/>
+            <line x1="8" y1="20" x2="32" y2="20" stroke="#A07E45" stroke-width="0.6" stroke-dasharray="2 2"/>
+            <line x1="14" y1="9" x2="14" y2="31" stroke="#A07E45" stroke-width="0.6" stroke-dasharray="2 2"/>
+            <line x1="26" y1="9" x2="26" y2="31" stroke="#A07E45" stroke-width="0.6" stroke-dasharray="2 2"/>
+            <circle cx="20" cy="20" r="4" fill="#8B5A2B" opacity="0.4"/>
+          </svg>
+          <h4 class="font-display font-600 text-sm text-earth group-hover:text-clay transition-colors">Do-si-dos</h4>
+          <p class="font-body text-[11px] text-charcoal/40 mt-1">4 countries · ~0.7 kg CO₂</p>
+        </div>
+
+        <!-- Trefoils -->
+        <div class="product-tile rounded-2xl p-5 cursor-pointer text-center group">
+          <svg viewBox="0 0 40 40" class="w-16 h-16 mx-auto mb-3" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="13" r="9" fill="#D4A56A"/>
+            <circle cx="13" cy="24" r="9" fill="#D4A56A"/>
+            <circle cx="27" cy="24" r="9" fill="#D4A56A"/>
+            <circle cx="20" cy="22" r="2.5" fill="#A07E45"/>
+          </svg>
+          <h4 class="font-display font-600 text-sm text-earth group-hover:text-clay transition-colors">Trefoils</h4>
+          <p class="font-body text-[11px] text-charcoal/40 mt-1">4 countries · ~0.6 kg CO₂</p>
+        </div>
+
+        <!-- Lemon-Ups -->
+        <div class="product-tile rounded-2xl p-5 cursor-pointer text-center group">
+          <svg viewBox="0 0 40 40" class="w-16 h-16 mx-auto mb-3" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="17" fill="#F0CD4A"/>
+            <circle cx="20" cy="20" r="13" fill="none" stroke="#D4A516" stroke-width="0.5"/>
+            <circle cx="20" cy="20" r="6" fill="#D4A516" opacity="0.4"/>
+            <line x1="20" y1="6" x2="20" y2="11" stroke="#D4A516" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="20" y1="29" x2="20" y2="34" stroke="#D4A516" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="6" y1="20" x2="11" y2="20" stroke="#D4A516" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="29" y1="20" x2="34" y2="20" stroke="#D4A516" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          <h4 class="font-display font-600 text-sm text-earth group-hover:text-clay transition-colors">Lemon-Ups</h4>
+          <p class="font-body text-[11px] text-charcoal/40 mt-1">5 countries · ~0.65 kg CO₂</p>
+        </div>
+
+        <!-- Toffee-tastic -->
+        <div class="product-tile rounded-2xl p-5 cursor-pointer text-center group">
+          <svg viewBox="0 0 40 40" class="w-16 h-16 mx-auto mb-3" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="17" fill="#C49350"/>
+            <circle cx="20" cy="20" r="13" fill="none" stroke="#A07840" stroke-width="0.5"/>
+            <rect x="13" y="13" width="3" height="2" fill="#5D3A1F" rx="0.5"/>
+            <rect x="22" y="11" width="2" height="3" fill="#5D3A1F" rx="0.5"/>
+            <rect x="11" y="22" width="3" height="2" fill="#5D3A1F" rx="0.5"/>
+            <rect x="24" y="20" width="2" height="3" fill="#5D3A1F" rx="0.5"/>
+            <rect x="17" y="25" width="3" height="2" fill="#5D3A1F" rx="0.5"/>
+          </svg>
+          <h4 class="font-display font-600 text-sm text-earth group-hover:text-clay transition-colors">Toffee-tastic</h4>
+          <p class="font-body text-[11px] text-charcoal/40 mt-1">5 countries · ~0.7 kg CO₂</p>
+        </div>
+
+        <!-- Adventurefuls -->
+        <div class="product-tile rounded-2xl p-5 cursor-pointer text-center group">
+          <svg viewBox="0 0 40 40" class="w-16 h-16 mx-auto mb-3" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="17" fill="#3D1F0F"/>
+            <circle cx="20" cy="20" r="9" fill="#C49350"/>
+            <path d="M20 14 Q24 16 24 20 Q24 24 20 24 Q16 24 16 20 Q16 18 18 18" stroke="#5D3A1F" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+            <circle cx="14" cy="14" r="0.7" fill="#FDF8F0"/>
+            <circle cx="26" cy="14" r="0.7" fill="#FDF8F0"/>
+          </svg>
+          <h4 class="font-display font-600 text-sm text-earth group-hover:text-clay transition-colors">Adventurefuls</h4>
+          <p class="font-body text-[11px] text-charcoal/40 mt-1">6 countries · ~0.85 kg CO₂</p>
+        </div>
+
+        <!-- Exploremores -->
+        <div class="product-tile rounded-2xl p-5 cursor-pointer text-center group">
+          <svg viewBox="0 0 40 40" class="w-16 h-16 mx-auto mb-3" xmlns="http://www.w3.org/2000/svg">
+            <!-- Cream layer peeking from underneath (sandwich hint) -->
+            <ellipse cx="20" cy="22" rx="17" ry="3" fill="#FAF0E6"/>
+            <!-- Top chocolate wafer -->
+            <circle cx="20" cy="19" r="17" fill="#2D1810"/>
+            <circle cx="20" cy="19" r="13" fill="none" stroke="#4F3520" stroke-width="0.5"/>
+            <!-- Toasted almond + marshmallow bits on surface -->
+            <circle cx="14" cy="14" r="0.9" fill="#A07840"/>
+            <circle cx="26" cy="14" r="0.8" fill="#A07840"/>
+            <circle cx="20" cy="11" r="0.7" fill="#FAF0E6"/>
+            <circle cx="14" cy="22" r="0.7" fill="#FAF0E6"/>
+            <circle cx="26" cy="22" r="0.7" fill="#FAF0E6"/>
+            <circle cx="22" cy="17" r="0.6" fill="#A07840"/>
+          </svg>
+          <h4 class="font-display font-600 text-sm text-earth group-hover:text-clay transition-colors">Exploremores</h4>
+          <p class="font-body text-[11px] text-charcoal/40 mt-1">7 countries · ~1.0 kg CO₂</p>
+        </div>
+      </div>
+
+      <p class="font-body text-xs text-charcoal/40 italic text-center mt-8">All carbon estimates marked with ~ are educational approximations.</p>
+    </div>
+  </section>
+
+  <!-- Calculator -->
+  <section id="calculator" class="py-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="max-w-2xl mb-12">
+        <div class="editorial-line mb-6"></div>
+        <h2 class="font-display font-700 text-4xl md:text-5xl text-earth mb-4">Council Calculator</h2>
+        <p class="font-body text-charcoal/50">Same cookie, different carbon footprint. Your location changes the last mile.</p>
+      </div>
+
+      <div class="bg-white rounded-3xl border border-sandDark p-8 md:p-12">
+        <div class="grid md:grid-cols-2 gap-10">
+          <div>
+            <label class="font-body text-xs font-medium text-charcoal/40 uppercase tracking-wider block mb-3">Your Girl Scout Council</label>
+            <select class="w-full bg-sand border border-sandDark rounded-xl px-4 py-3.5 font-body text-sm outline-none focus:border-clay transition-colors">
+              <option>Choose your council...</option>
+              <option>Girl Scouts of Greater Los Angeles</option>
+              <option>Girl Scouts Heart of the South</option>
+              <option>Girl Scouts of Kentuckiana</option>
+            </select>
+
+            <div class="mt-8 space-y-4">
+              <div class="flex items-center justify-between py-2 border-b border-sandDark">
+                <span class="font-body text-sm text-charcoal/40">Your bakery</span>
+                <span class="font-display font-600 text-sm text-earth">Little Brownie Bakers</span>
+              </div>
+              <div class="flex items-center justify-between py-2 border-b border-sandDark">
+                <span class="font-body text-sm text-charcoal/40">Bakery location</span>
+                <span class="font-display font-600 text-sm text-earth">Louisville, KY</span>
+              </div>
+              <div class="flex items-center justify-between py-2">
+                <span class="font-body text-sm text-charcoal/40">Shipping distance</span>
+                <span class="font-display font-600 text-sm text-ocean">~1,200 miles</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col items-center justify-center">
+            <div class="w-48 h-48 rounded-full bg-sand border-4 border-clay/20 flex flex-col items-center justify-center">
+              <p class="font-body text-xs text-clay uppercase tracking-wider font-medium">Your footprint</p>
+              <p class="font-display font-900 text-5xl text-earth mt-1">0.82</p>
+              <p class="font-body text-xs text-charcoal/40">kg CO₂ per box</p>
+            </div>
+            <p class="font-body text-xs text-charcoal/30 mt-6 text-center max-w-48">
+              In Kentucky: 0.76 kg<br>
+              In California: 0.88 kg
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why It Matters -->
+  <section id="why" class="py-24 px-6 bg-earth text-sand">
+    <div class="max-w-5xl mx-auto">
+      <div class="max-w-2xl mb-16">
+        <div class="w-16 h-0.5 bg-clay mb-6"></div>
+        <h2 class="font-display font-700 text-4xl md:text-5xl mb-4">Why It Matters</h2>
+        <p class="font-body text-sand/50">Knowing what's in the box helps Scouts answer the questions customers actually ask — about people, places, and the long way ingredients travel.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-earthLight/50 rounded-2xl p-8 border border-white/5">
+          <p class="font-display font-900 text-5xl text-clay mb-4">9,400<span class="text-2xl"> mi</span></p>
+          <h3 class="font-display font-600 text-xl mb-3">Environmental Impact</h3>
+          <p class="font-body text-sm text-sand/50 leading-relaxed">The palm oil in your Thin Mints crossed 9,400 miles by cargo ship from Indonesia before it became a cookie. Every box carries a footprint, even when you can't see it.</p>
+        </div>
+
+        <div class="bg-earthLight/50 rounded-2xl p-8 border border-white/5">
+          <p class="font-display font-900 text-5xl text-clay mb-4">Age 5</p>
+          <h3 class="font-display font-600 text-xl mb-3">Labor & Human Rights</h3>
+          <p class="font-body text-sm text-sand/50 leading-relaxed">A Malaysian government report found kids as young as 5 working on palm oil plantations alongside their parents. Behind every ingredient is a real person.</p>
+        </div>
+
+        <div class="bg-earthLight/50 rounded-2xl p-8 border border-white/5">
+          <p class="font-display font-900 text-5xl text-clay mb-4">6</p>
+          <h3 class="font-display font-600 text-xl mb-3">Global Cooperation</h3>
+          <p class="font-body text-sm text-sand/50 leading-relaxed">Palm oil from Malaysia, sugar from Brazil, cocoa from the Ivory Coast and Ghana — a single Thin Mint is the result of dozens of countries working together. That's kind of amazing.</p>
+        </div>
+
+        <div class="bg-earthLight/50 rounded-2xl p-8 border border-white/5">
+          <p class="font-display font-900 text-5xl text-mossLight mb-4">You</p>
+          <h3 class="font-display font-600 text-xl mb-3">Consumer Power</h3>
+          <p class="font-body text-sm text-sand/50 leading-relaxed">Knowing what you're selling is a superpower. When a customer at a booth asks "are these sustainable?", a Scout who has done the homework can answer with real confidence — and that builds trust.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Olivia's Story -->
+  <section id="olivia" class="py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="editorial-line mb-6"></div>
+      <p class="font-body text-xs font-medium text-clay tracking-wider uppercase mb-4">The Emotional Centerpiece</p>
+      <h2 class="font-display font-700 text-4xl md:text-5xl text-earth mb-10">Olivia Chaffin's Story</h2>
+
+      <!-- Polaroid photo placeholder -->
+      <div class="float-right ml-6 mb-4 md:ml-8 md:mb-6 w-44 md:w-56">
+        <div class="aspect-[3/4] bg-gradient-to-br from-clay/15 via-mossLight/20 to-sage/30 border border-moss/30 rounded-md shadow-xl p-3 md:rotate-[3deg] flex flex-col">
+          <div class="flex-1 bg-white/40 rounded-sm flex flex-col items-center justify-center p-3 text-center">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1B4332" stroke-width="1.5" class="mb-2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
+            <p class="font-display font-600 text-xs text-earth">Photo of Olivia</p>
+            <p class="font-body text-[10px] text-charcoal/50 mt-0.5">From news coverage<br>(with permission)</p>
+          </div>
+          <p class="font-display italic text-[11px] text-charcoal/50 text-center pt-2">— Tennessee, age 11 —</p>
+        </div>
+      </div>
+
+      <div class="relative">
+        <span class="quote-mark absolute -top-8 -left-4">"</span>
+
+        <div class="space-y-6 font-body text-charcoal/60 leading-[1.8] text-lg pl-2">
+          <p>
+            <span class="font-display font-700 text-earth text-xl">Olivia Chaffin was one of the best cookie sellers in her Girl Scout troop</span> in Jonesborough, Tennessee. She sold over 600 boxes and earned a badge for it. For her, Girl Scouts was about the idea that girls could actually do good in the world.
+          </p>
+          <p>
+            When Olivia heard that palm oil production was linked to rainforest loss in places like Indonesia and Malaysia, she started reading the ingredients on her own cookie boxes. Sure enough, palm oil was right there on the label.
+          </p>
+          <p>
+            Olivia noticed something else, too: a little green tree logo and the words <em class="text-clay font-medium not-italic">"certified sustainable."</em> At first that was reassuring — it sounded like the palm oil in her cookies wasn't the kind that hurt rainforests or orangutans.
+          </p>
+          <p>
+            Then she looked closer and saw the word "mixed" on the label. When she looked it up, she learned something surprising. "Mixed" meant that sustainable palm oil had been blended with palm oil from other sources somewhere in the supply chain, so you couldn't trace any specific box back to any specific farm.
+          </p>
+          <p>
+            So Olivia started asking questions. She asked her troop, she researched certifications, she read about workers and farms across the world. The more she learned, the more she realized how many people, places, and choices go into a single cookie.
+          </p>
+          <p>
+            Olivia is about 20 now. She stopped selling cookies at 14, and the questions she had been asking eventually turned into a petition that was covered by national news. It started a real conversation about transparency in food supply chains — one that is still pushing the industry to be more open about where ingredients come from.
+          </p>
+        </div>
+
+        <blockquote class="mt-10 py-6 border-y border-sandDark">
+          <p class="font-display font-500 italic text-2xl text-earth text-center">
+            Every Scout at a cookie booth deserves to be able to answer<br>the simple question a customer might ask: <em>where does this come from?</em>
+          </p>
+        </blockquote>
+
+        <p class="font-body text-sm text-charcoal/30 italic mt-6 text-center">
+          Original content by Mia
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz Section -->
+  <section id="quiz" class="py-24 px-6 bg-white">
+    <div class="max-w-5xl mx-auto">
+      <div class="max-w-2xl mb-12">
+        <div class="editorial-line mb-6"></div>
+        <h2 class="font-display font-700 text-4xl md:text-5xl text-earth mb-4">Test Your Knowledge</h2>
+        <p class="font-body text-charcoal/50">Take a 10-question quiz drawn from a pool of 40. Score 7 out of 10 and earn a printable certificate. Each retake pulls a fresh set, so no two attempts are the same.</p>
+      </div>
+
+      <!-- Quiz preview cards: entry → question → results -->
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <!-- Entry -->
+        <div class="bg-sand rounded-2xl border border-sandDark p-6">
+          <p class="font-body text-xs font-medium text-clay tracking-wider uppercase mb-3">Step 1</p>
+          <h3 class="font-display font-600 text-lg text-earth mb-4">Enter Your Name</h3>
+          <div class="bg-white rounded-lg border border-sandDark p-3 mb-4">
+            <input type="text" placeholder="Your name" class="w-full bg-transparent font-body text-sm outline-none placeholder:text-charcoal/30" disabled>
+          </div>
+          <button class="bg-earth text-sand font-body font-semibold text-sm px-5 py-2.5 rounded-full">Start Quiz →</button>
+        </div>
+
+        <!-- Question -->
+        <div class="bg-sand rounded-2xl border border-sandDark p-6">
+          <div class="flex items-center justify-between mb-3">
+            <p class="font-body text-xs font-medium text-clay tracking-wider uppercase">Step 2</p>
+            <p class="font-body text-xs text-charcoal/40">Question 3 of 10</p>
+          </div>
+          <h3 class="font-display font-600 text-base text-earth mb-4 leading-snug">Which two countries produce ~70% of the world's cocoa?</h3>
+          <div class="space-y-2">
+            <div class="bg-white rounded-md border border-sandDark px-3 py-2.5 font-body text-sm text-charcoal/70">○ Brazil & Mexico</div>
+            <div class="bg-mossLight/20 rounded-md border-2 border-moss px-3 py-2.5 font-body text-sm text-earth font-medium">● Ivory Coast & Ghana</div>
+            <div class="bg-white rounded-md border border-sandDark px-3 py-2.5 font-body text-sm text-charcoal/70">○ Indonesia & Malaysia</div>
+            <div class="bg-white rounded-md border border-sandDark px-3 py-2.5 font-body text-sm text-charcoal/70">○ United States & Canada</div>
+          </div>
+        </div>
+
+        <!-- Score -->
+        <div class="bg-sand rounded-2xl border border-sandDark p-6">
+          <p class="font-body text-xs font-medium text-clay tracking-wider uppercase mb-3">Step 3 — Results</p>
+          <div class="flex items-baseline gap-2 mb-1">
+            <p class="font-display font-900 text-5xl text-earth">8</p>
+            <p class="font-display text-2xl text-charcoal/30">/ 10</p>
+          </div>
+          <p class="font-body text-sm text-moss font-semibold mb-4">Passed! Certificate ready.</p>
+          <p class="font-body text-xs font-medium text-charcoal/50 uppercase tracking-wider mb-2">Missed</p>
+          <ul class="font-body text-xs text-charcoal/60 space-y-1.5">
+            <li>• Q5: Mass Balance certification</li>
+            <li>• Q9: Bakery locations</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Certificate preview -->
+      <div class="relative max-w-2xl mx-auto">
+        <p class="font-body text-xs font-medium text-clay tracking-wider uppercase text-center mb-4">— Earn this when you pass —</p>
+        <div class="bg-gradient-to-br from-sand via-sageTint to-sandDark rounded-md border-4 border-double border-clay/40 p-10 md:p-12 text-center shadow-2xl">
+          <div class="border-2 border-earth/15 rounded-sm p-8 md:p-10">
+            <p class="font-body text-[10px] font-medium text-clay tracking-[0.3em] uppercase mb-6">Certificate of Completion</p>
+            <p class="font-display font-500 italic text-charcoal/60 text-base md:text-lg mb-3">This certifies that</p>
+            <p class="font-display font-900 text-3xl md:text-4xl text-earth mb-4 italic">[Your Name Here]</p>
+            <p class="font-display font-500 italic text-charcoal/60 text-sm md:text-base mb-8 max-w-md mx-auto">has explored the hidden journey of Girl Scout cookies and earned the title of <span class="not-italic font-700 text-earth">Informed Scout</span>.</p>
+            <div class="flex items-center justify-center gap-3 mb-2">
+              <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="9" r="6.5" fill="#40916C"/>
+                <circle cx="9" cy="20" r="6.5" fill="#40916C"/>
+                <circle cx="23" cy="20" r="6.5" fill="#40916C"/>
+                <circle cx="16" cy="17" r="2.5" fill="#1B4332"/>
+              </svg>
+              <p class="font-display font-700 text-earth text-sm">The Hidden Journey</p>
+            </div>
+            <p class="font-body text-[10px] text-charcoal/40 italic">A Girl Scout Gold Award Project</p>
+          </div>
+        </div>
+        <div class="text-center mt-6">
+          <button class="font-body font-medium text-xs text-clay hover:text-clayLight transition-colors uppercase tracking-wider inline-flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Print Certificate
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sources Section -->
+  <section id="sources" class="py-24 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="max-w-2xl mb-12">
+        <div class="editorial-line mb-6"></div>
+        <h2 class="font-display font-700 text-4xl md:text-5xl text-earth mb-4">Sources</h2>
+        <p class="font-body text-charcoal/50">Every fact on this site is traceable. All sources are free and publicly accessible.</p>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-sandDark overflow-hidden">
+        <table class="w-full">
+          <thead class="bg-sand">
+            <tr>
+              <th class="text-left font-body text-xs font-medium text-charcoal/40 tracking-wider uppercase px-6 py-4">Source</th>
+              <th class="text-left font-body text-xs font-medium text-charcoal/40 tracking-wider uppercase px-6 py-4">What it provides</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-sandDark">
+            <tr class="hover:bg-sand/50 transition-colors">
+              <td class="font-display font-600 text-sm text-earth px-6 py-4">Open Supply Hub</td>
+              <td class="font-body text-sm text-charcoal/60 px-6 py-4">Factory and supplier location data</td>
+            </tr>
+            <tr class="hover:bg-sand/50 transition-colors">
+              <td class="font-display font-600 text-sm text-earth px-6 py-4">Freightos Emissions Calculator</td>
+              <td class="font-body text-sm text-charcoal/60 px-6 py-4">Shipping carbon footprint estimates</td>
+            </tr>
+            <tr class="hover:bg-sand/50 transition-colors">
+              <td class="font-display font-600 text-sm text-earth px-6 py-4">EcoTransIT World</td>
+              <td class="font-body text-sm text-charcoal/60 px-6 py-4">Transport emissions calculations</td>
+            </tr>
+            <tr class="hover:bg-sand/50 transition-colors">
+              <td class="font-display font-600 text-sm text-earth px-6 py-4">EPA Supply Chain Guidance</td>
+              <td class="font-body text-sm text-charcoal/60 px-6 py-4">U.S. environmental supply chain data</td>
+            </tr>
+            <tr class="hover:bg-sand/50 transition-colors">
+              <td class="font-display font-600 text-sm text-earth px-6 py-4">RSPO Records</td>
+              <td class="font-body text-sm text-charcoal/60 px-6 py-4">Palm oil certification details</td>
+            </tr>
+            <tr class="hover:bg-sand/50 transition-colors">
+              <td class="font-display font-600 text-sm text-earth px-6 py-4">World Cocoa Foundation</td>
+              <td class="font-body text-sm text-charcoal/60 px-6 py-4">Cocoa supply chain & sourcing data</td>
+            </tr>
+            <tr class="hover:bg-sand/50 transition-colors">
+              <td class="font-display font-600 text-sm text-earth px-6 py-4">EPA Paper Recycling Data</td>
+              <td class="font-body text-sm text-charcoal/60 px-6 py-4">Paper fiber recycling limits (5–7 cycles)</td>
+            </tr>
+            <tr class="hover:bg-sand/50 transition-colors">
+              <td class="font-display font-600 text-sm text-earth px-6 py-4">Company sustainability reports</td>
+              <td class="font-body text-sm text-charcoal/60 px-6 py-4">Direct data from Girl Scouts, ABC Bakers, Ferrero</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-16 px-6 border-t border-sandDark">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <p class="font-display font-700 text-lg text-earth">The Hidden Journey</p>
+          <p class="font-body text-sm text-charcoal/40 mt-1">A Girl Scout Gold Award Project by Mia</p>
+        </div>
+        <p class="font-body text-xs text-charcoal/25 text-center md:text-right">All carbon data are educational approximations marked with ~.<br>Sources cited throughout. Data confidence levels are transparent.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
