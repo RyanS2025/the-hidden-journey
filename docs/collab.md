@@ -26,10 +26,8 @@ These tasks have to happen before either of you can work independently. Should t
 - [ ] **Both:** Walk through the JSON file formats AND the component prop interfaces together so Mia knows exactly what shapes to build against without needing to ask Ryan
 
 The JSON files Ryan creates (empty, for Mia to fill):
-- `data/products/thin-mint.json`
-- `data/products/vest.json`
-- `data/products/cookie-box.json`
-- `data/products/inventory.json` (the 30–50 product search list)
+- `data/cookies/thin-mint.json` (the flagship deep dive — full supply chain detail)
+- `data/cookies/lineup.json` (all 9 cookie varieties with summary data: name, ingredients, carbon estimate, key facts)
 - `data/councils.json` (which council uses which bakery)
 - `data/questions.json` (the 40 quiz questions)
 - `data/sources.json` (all cited sources)
@@ -49,10 +47,9 @@ Work on these in any order you like. The Writing and Data tasks don't require co
   - Global Cooperation
   - Consumer Power
   Save as `content/why-it-matters.md`
-- [x] Write a short ethics angle for each of the three featured products (2–3 paragraphs each):
+- [x] Write a short ethics angle for the featured cookie content (2–3 paragraphs each):
   - Thin Mint: the "Mass Balance" palm oil story and what it means
-  - Vest: what "Made in USA" actually means for workers and transparency
-  - Cookie Box: what "100% recycled" really means
+  - Cookie Box (packaging note): what "100% recycled" really means
   Save as `content/ethics-angles.md`
 - [x] Write the homepage intro copy — a short, engaging paragraph that explains what this site is and why it matters, written for a Girl Scout audience (ages 10–18). Save as `content/homepage.md`
 
@@ -60,10 +57,8 @@ Work on these in any order you like. The Writing and Data tasks don't require co
 
 Ryan will give you the empty files with the right format after Phase 0. Your job is to fill in the real facts.
 
-- [ ] Fill in `data/products/thin-mint.json` — supply chain steps, ingredient origins, confidence levels (confirmed vs. estimated), and total carbon footprint (~0.8 kg CO₂ per box)
-- [ ] Fill in `data/products/vest.json` — supply chain steps from cotton/polyester sourcing through USA manufacturing (~10 kg CO₂ per vest)
-- [ ] Fill in `data/products/cookie-box.json` — pulp sourcing, paper mill, printing, assembly steps
-- [ ] Fill in `data/products/inventory.json` — the 30–50 product search inventory, one entry per product across all seven categories (see PRD §4.2 for the category list and examples)
+- [ ] Fill in `data/cookies/thin-mint.json` — flagship deep dive. Supply chain steps, ingredient origins, confidence levels (confirmed vs. estimated), and total carbon footprint (~0.8 kg CO₂ per box)
+- [ ] Fill in `data/cookies/lineup.json` — all 9 cookie varieties (Thin Mints, Samoas, Tagalongs, Do-si-dos, Trefoils, Lemon-Ups, Toffee-tastic, Adventurefuls, Exploremores). Each entry needs name, key ingredients, distinctive supply-chain note, and a rough carbon estimate
 - [ ] Fill in `data/councils.json` — which of the 112 Girl Scout councils uses ABC Bakers (South Dakota) vs. Little Brownie Bakers (Kentucky). This data is available from GSUSA's website and council directories.
 - [ ] Fill in `data/questions.json` — write all 40 quiz questions. Each question needs:
   - The question text
@@ -75,8 +70,8 @@ Ryan will give you the empty files with the right format after Phase 0. Your job
   | Topic | # of Questions |
   |---|---|
   | Thin Mint supply chain | 10 |
-  | Girl Scout Vest | 6 |
-  | Cookie Box | 5 |
+  | Other cookie varieties (lineup) | 8 |
+  | Cookie packaging (the box) | 3 |
   | Carbon calculator / footprints | 7 |
   | Why It Matters themes | 7 |
   | Olivia Chaffin story | 5 |
@@ -97,23 +92,23 @@ You're building the visual layer of the entire site. Use Claude Code to walk thr
 
 #### Site shell
 
-- [ ] **Site layout** (`app/layout.tsx` plus header/footer components) — Build the global header with site name and navigation links (Home, Thin Mint, Vest, Cookie Box, Why It Matters, Quiz, Sources), and the footer. Make sure mobile navigation works (hamburger menu or similar). Ask Claude Code: *"Help me build a Next.js site layout with a responsive header and mobile navigation menu using Tailwind CSS and shadcn/ui."*
+- [ ] **Site layout** (`app/layout.tsx` plus header/footer components) — Build the global header with site name and navigation links (Home, Thin Mint, Cookie Lineup, Calculator, Why It Matters, Olivia, Quiz, Sources), and the footer. Make sure mobile navigation works (hamburger menu or similar). Ask Claude Code: *"Help me build a Next.js site layout with a responsive header and mobile navigation menu using Tailwind CSS and shadcn/ui."*
 
 #### Static pages
 
-- [ ] **Homepage page** (`app/page.tsx`) — Build the homepage using the copy you wrote in `content/homepage.md`. Hero heading, intro paragraph, links to the three featured products. Ask Claude Code: *"Help me build a Next.js homepage page that displays my homepage.md content with Tailwind CSS styling."*
+- [ ] **Homepage page** (`app/page.tsx`) — Build the homepage using the copy you wrote in `content/homepage.md`. Hero heading, tagline, intro paragraph, and links to the Thin Mint deep dive and the full cookie lineup. Ask Claude Code: *"Help me build a Next.js homepage page that displays my homepage.md content with Tailwind CSS styling."*
 
 - [ ] **"Why It Matters" page** (`app/why-it-matters/page.tsx`) — Show your four themes as four visual cards. Ask Claude Code: *"Help me build a Next.js page that shows four content sections as cards using Tailwind CSS, reading from my why-it-matters.md file."*
 
 - [ ] **Sources page** (`app/sources/page.tsx`) — Lists all sources from `data/sources.json` in a clean table or list. Ask Claude Code: *"Help me build a Next.js page that reads sources.json and displays each source as a row in a table using Tailwind CSS."*
 
-#### Product deep-dive pages
+- [ ] **Olivia's Story page** (`app/olivia/page.tsx`) — Dedicated page for the Olivia Chaffin story from `content/olivia-chaffin.md`. Editorial layout with the polaroid photo placeholder, body paragraphs, and pull quote. Ask Claude Code: *"Help me build a Next.js page that displays my olivia-chaffin.md content with editorial styling — body text, a polaroid photo block on the side, and a pull quote — using Tailwind CSS."*
 
-- [ ] **Thin Mint deep dive page** (`app/thin-mint/page.tsx`) — The main product page for Thin Mints. Shows the supply chain journey (a series of `JourneyStep` cards), the `CarbonChart` component, the ethics angle from `content/ethics-angles.md`, and an excerpt or link to the Olivia Chaffin story. Use placeholder data — Ryan wires the real JSON later. Ask Claude Code: *"Help me build a Next.js product page that displays a series of supply-chain step cards and a carbon breakdown chart, against the TypeScript interface Ryan defined."*
+#### Cookie pages
 
-- [ ] **Vest deep dive page** (`app/vest/page.tsx`) — Same structure as Thin Mint, for the Girl Scout vest. Includes the "Made in USA" ethics angle. Ask Claude Code: *"Help me build a Next.js product page like the Thin Mint page but for the Girl Scout vest, reusing the journey step card and carbon chart components."*
+- [ ] **Thin Mint flagship deep dive page** (`app/thin-mint/page.tsx`) — The flagship product page. Shows the supply chain journey (a series of `JourneyStep` cards), the `CarbonChart` component, the "Mass Balance" ethics angle from `content/ethics-angles.md`, the "100% recycled" cookie-box packaging note, and an excerpt or link to the Olivia Chaffin story. Use placeholder data — Ryan wires the real JSON later. Ask Claude Code: *"Help me build a Next.js product page that displays a series of supply-chain step cards and a carbon breakdown chart, against the TypeScript interface Ryan defined."*
 
-- [ ] **Cookie Box deep dive page** (`app/cookie-box/page.tsx`) — Same structure, for the cookie box. Includes the "100% recycled" ethics angle. Ask Claude Code: *"Help me build a Next.js product page for the cookie box, reusing the same journey step and carbon chart components."*
+- [ ] **Cookie lineup page** (`app/lineup/page.tsx`) — A grid of all 9 cookie varieties (Thin Mints, Samoas, Tagalongs, Do-si-dos, Trefoils, Lemon-Ups, Toffee-tastic, Adventurefuls, Exploremores). Each card shows the cookie's SVG illustration, name, key ingredients, country count, and rough carbon estimate. Click-through opens a focused view. Ask Claude Code: *"Help me build a Next.js page that reads `data/cookies/lineup.json` and displays a 3×3 grid of cookie cards with their illustrations, names, and carbon estimates."*
 
 #### Reusable components
 
@@ -125,7 +120,7 @@ You're building the visual layer of the entire site. Use Claude Code to walk thr
 
 #### Interactive page templates (you build the look, Ryan adds the logic)
 
-- [ ] **"Explore Any Product" search page** (`app/explore/page.tsx`) — Visual layout: a search input, a result list area, and a "no results" fallback message with links to Open Supply Hub and Freightos. Use placeholder results until Ryan wires the fuzzy search. Ask Claude Code: *"Help me build a Next.js search page with a text input, a result list area, and a 'no results' fallback message, using Tailwind CSS — Ryan will wire the search logic later."*
+- [ ] **Cookie search page** (`app/explore/page.tsx`) — Visual layout: a search input that filters the 9 cookies by name or ingredient, plus a "no results" fallback message with links to Open Supply Hub and Freightos for cookies/products beyond your lineup. Use placeholder results until Ryan wires the fuzzy search. Ask Claude Code: *"Help me build a Next.js search page with a text input, a result list area, and a 'no results' fallback message, using Tailwind CSS — Ryan will wire the search logic later."*
 
 - [ ] **Council carbon calculator page** (`app/calculator/page.tsx`) — Visual layout: a dropdown listing all 112 councils (placeholder list until Ryan loads from `data/councils.json`), and a result display showing the calculated carbon footprint. Ask Claude Code: *"Help me build a Next.js page with a council dropdown and a result display area for a carbon calculator, using Tailwind CSS — Ryan will plug in the calculation logic."*
 
@@ -164,8 +159,9 @@ Work on these in order within each section, but the sections themselves can over
 
 Mia builds the UI templates; you wire the data and logic in.
 
-- [ ] Wire JSON data into Mia's three product deep-dive pages (Thin Mint, Vest, Cookie Box) — feed the right journey steps and carbon chart data into each page
-- [ ] Fuzzy search logic for the "Explore Any Product" page — match user input against `data/products/inventory.json`, return ranked results to Mia's result list
+- [ ] Wire JSON data into Mia's Thin Mint deep-dive page — feed the journey steps and carbon chart data from `data/cookies/thin-mint.json`
+- [ ] Wire JSON data into Mia's cookie lineup page — feed the 9 cookies from `data/cookies/lineup.json` into the grid
+- [ ] Fuzzy search logic for the cookie search page — match user input against `data/cookies/lineup.json` (cookie names + ingredients), return ranked results to Mia's result list
 - [ ] Council carbon calculation — read `data/councils.json`, compute the full Thin Mint footprint for the selected council's bakery + shipping distance, hand the number to Mia's result display
 - [ ] Carbon chart data transformation — turn raw carbon numbers from JSON into chart-ready category breakdowns for Mia's `CarbonChart` component
 
@@ -181,7 +177,7 @@ Mia builds the UI templates; you wire the data and logic in.
 ### Guided Walkthrough Mode
 
 - [ ] Add a "Presentation Mode" toggle to the site (hidden by default, accessible via a URL like `/present`)
-- [ ] In presentation mode: hide the free navigation, show Previous / Next buttons, and step through a fixed sequence: Homepage → Thin Mint → Vest → Cookie Box → Carbon Calculator → Why It Matters → Quiz
+- [ ] In presentation mode: hide the free navigation, show Previous / Next buttons, and step through a fixed sequence: Homepage → Thin Mint → Cookie Lineup → Carbon Calculator → Why It Matters → Olivia → Quiz
 - [ ] Make sure presentation mode works on a laptop connected to a projector (landscape, larger text)
 
 ### Testing

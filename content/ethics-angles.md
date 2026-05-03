@@ -8,15 +8,7 @@ Most certified palm oil in the world is sold under a system called Mass Balance.
 
 That doesn't mean the certification is useless. It means the real answer to "is this sustainable?" is kind of complicated: *an amount of sustainable palm oil equal to what's in this cookie was produced somewhere — but the specific oil in the box in your hand can't be traced back to one farm.* That's the kind of honest answer that turns a scripted pitch into an actual conversation.
 
-## The Girl Scout Vest: What "Made in USA" Means for Workers
-
-Girl Scout vests are labeled as made or assembled in the US, and a lot of buyers see that and trust it. And for good reason — American factories follow federal labor laws, minimum wage rules, OSHA safety standards, and child labor protections that just don't exist in a lot of other countries.
-
-But "Made in USA" is a specific legal term the FTC regulates. For a product to use it without any qualifier, the rule says it has to be "all or virtually all" made in the US, including most of the materials. That's why it matters that Girl Scouts officially says the vest is *"made or assembled in the U.S."* instead of just "Made in USA" — that wording leaves some room for materials that came from other places. The current vest is actually mostly polyester (40% of it is recycled from plastic bottles), with only about 20% cotton. Those fibers have a global supply chain of their own.
-
-So when a customer asks about the vest, you can give them a real answer: the sewing, cutting, and assembly happened here, under US labor standards. That's not nothing — it actually protects real people. But it's not the same as saying every fiber in the vest is American, and knowing the difference is part of being trustworthy when you talk about it.
-
-## The Cookie Box: What "100% Recycled" Really Means
+## The Cookie Box (Packaging Note): What "100% Recycled" Really Means
 
 Girl Scout cookie boxes are made from 100% recycled paperboard. That part is accurate — the bakers confirm it. But there's something to know about what "recycled" actually covers, because it lumps together two pretty different things.
 

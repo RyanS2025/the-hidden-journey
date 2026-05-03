@@ -112,10 +112,10 @@
       height: 180px;
       border-radius: 50%;
       background: conic-gradient(
-        #40916C 0% 35%,
-        #2980B9 35% 65%,
-        #D4553A 65% 85%,
-        #D4553A88 85% 100%
+        #40916C 0% 50%,
+        #2980B9 50% 70%,
+        #D4553A 70% 90%,
+        #D4553A88 90% 100%
       );
       position: relative;
     }
@@ -161,6 +161,22 @@
       height: 1px;
       background: #F5EBE0;
     }
+
+    /* Page-switching system: hide non-active pages, highlight active nav link */
+    [data-page].page-hidden { display: none; }
+    nav a.nav-active {
+      color: #D4553A;
+      position: relative;
+    }
+    nav a.nav-active::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -6px;
+      height: 2px;
+      background: #D4553A;
+    }
   </style>
 </head>
 <body class="min-h-screen">
@@ -168,7 +184,7 @@
   <!-- Navigation -->
   <nav class="fixed top-0 w-full z-50 bg-sand/90 backdrop-blur-md">
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="#" class="font-display font-700 text-lg text-earth tracking-tight flex items-center gap-2.5">
+      <a href="#home" data-target="home" class="font-display font-700 text-lg text-earth tracking-tight flex items-center gap-2.5">
         <svg width="26" height="26" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-label="Trefoil">
           <circle cx="16" cy="9" r="6.5" fill="#40916C"/>
           <circle cx="9" cy="20" r="6.5" fill="#40916C"/>
@@ -177,14 +193,15 @@
         </svg>
         The Hidden Journey
       </a>
-      <div class="hidden md:flex items-center gap-7 font-body text-sm font-medium">
-        <a href="#products">Products</a>
-        <a href="#explore">Explore</a>
-        <a href="#calculator">Calculator</a>
-        <a href="#why">Why It Matters</a>
-        <a href="#olivia">Olivia</a>
-        <a href="#quiz">Quiz</a>
-        <a href="#sources">Sources</a>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium">
+        <a href="#home" data-target="home">Home</a>
+        <a href="#thin-mint" data-target="thin-mint">Thin Mint</a>
+        <a href="#lineup" data-target="lineup">Lineup</a>
+        <a href="#calculator" data-target="calculator">Calculator</a>
+        <a href="#why" data-target="why">Why It Matters</a>
+        <a href="#olivia" data-target="olivia">Olivia</a>
+        <a href="#quiz" data-target="quiz">Quiz</a>
+        <a href="#sources" data-target="sources">Sources</a>
       </div>
       <button class="md:hidden text-earth">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
@@ -193,7 +210,7 @@
   </nav>
 
   <!-- Hero -->
-  <section class="min-h-screen flex items-center px-6 pt-16 hero-bg relative overflow-hidden">
+  <section data-page="home" class="min-h-screen flex items-center px-6 pt-16 hero-bg relative overflow-hidden">
     <!-- Organic blobs -->
     <div class="absolute -top-20 -right-20 w-96 h-96 organic-blob bg-moss/5"></div>
     <div class="absolute -bottom-32 -left-20 w-80 h-80 organic-blob bg-clay/5"></div>
@@ -226,10 +243,10 @@
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4" style="animation: gentleRise 0.8s ease 0.5s both">
-          <a href="#products" class="inline-flex items-center justify-center bg-earth text-sand font-body font-semibold text-sm px-8 py-3.5 rounded-full hover:bg-earthLight transition-colors">
+          <a href="#thin-mint" data-target="thin-mint" class="inline-flex items-center justify-center bg-earth text-sand font-body font-semibold text-sm px-8 py-3.5 rounded-full hover:bg-earthLight transition-colors">
             Explore the Journey
           </a>
-          <a href="#olivia" class="inline-flex items-center justify-center font-body font-medium text-sm text-clay hover:text-clayLight transition-colors gap-1.5">
+          <a href="#olivia" data-target="olivia" class="inline-flex items-center justify-center font-body font-medium text-sm text-clay hover:text-clayLight transition-colors gap-1.5">
             Read Olivia's Story
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5"><path d="m6 12 4-4-4-4"/></svg>
           </a>
@@ -249,7 +266,7 @@
                 <p class="font-display font-600 text-sm">Palm Oil</p>
                 <p class="font-body text-xs text-charcoal/40">Indonesia & Malaysia</p>
               </div>
-              <span class="ml-auto font-body text-xs text-moss font-medium">9,400 mi</span>
+              <span class="ml-auto font-body text-xs text-moss font-medium">9,500 mi</span>
             </div>
             <div class="step-card rounded-2xl p-5 flex items-center gap-4">
               <div class="w-12 h-12 rounded-full bg-clay/10 flex items-center justify-center shrink-0">
@@ -259,7 +276,7 @@
                 <p class="font-display font-600 text-sm">Cocoa</p>
                 <p class="font-body text-xs text-charcoal/40">Ivory Coast & Ghana</p>
               </div>
-              <span class="ml-auto font-body text-xs text-moss font-medium">5,800 mi</span>
+              <span class="ml-auto font-body text-xs text-moss font-medium">6,500 mi</span>
             </div>
             <div class="step-card rounded-2xl p-5 flex items-center gap-4">
               <div class="w-12 h-12 rounded-full bg-ocean/10 flex items-center justify-center shrink-0">
@@ -297,7 +314,7 @@
   </section>
 
   <!-- Photo strip — Scout life -->
-  <section class="px-6 pt-16 pb-4">
+  <section data-page="home" class="px-6 pt-16 pb-4">
     <div class="max-w-5xl mx-auto">
       <p class="font-body text-xs font-medium text-clay tracking-wider uppercase mb-6 text-center">From the Booth · Scrapbook</p>
       <div class="grid grid-cols-3 gap-3 md:gap-6">
@@ -322,12 +339,12 @@
   </section>
 
   <!-- Products Section -->
-  <section id="products" class="py-24 px-6">
+  <section id="thin-mint" data-page="thin-mint" class="py-24 px-6">
     <div class="max-w-5xl mx-auto">
       <div class="max-w-2xl mb-16">
         <div class="editorial-line mb-6"></div>
-        <h2 class="font-display font-700 text-4xl md:text-5xl text-earth mb-4">Product Deep Dives</h2>
-        <p class="font-body text-charcoal/50 leading-relaxed">Three Girl Scout products you know and love — traced from raw materials to your hands, with carbon footprints at every step.</p>
+        <h2 class="font-display font-700 text-4xl md:text-5xl text-earth mb-4">Thin Mint Deep Dive</h2>
+        <p class="font-body text-charcoal/50 leading-relaxed">The flagship cookie, traced from palm oil plantation to your booth — every step, every country, every kilogram of carbon along the way.</p>
       </div>
 
       <!-- Thin Mint Deep Dive -->
@@ -348,10 +365,10 @@
               </div>
             </div>
             <div class="flex items-center justify-center gap-4 font-body text-[10px]">
-              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-moss"></span> Farming 35%</span>
-              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-ocean"></span> Shipping 30%</span>
+              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-moss"></span> Farming 50%</span>
+              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-ocean"></span> Shipping 20%</span>
               <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-clay"></span> Mfg 20%</span>
-              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-clayLight"></span> Dist 15%</span>
+              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-clayLight"></span> Dist 10%</span>
             </div>
           </div>
         </div>
@@ -439,7 +456,7 @@
               </div>
               <p class="font-body text-xs text-charcoal/40 uppercase tracking-wider mb-2">North Sioux City, SD or Louisville, KY</p>
               <p class="font-body text-sm text-charcoal/50 leading-relaxed">
-                <strong>ABC Bakers</strong> (North Sioux City, SD) and <strong>Little Brownie Bakers</strong> (Louisville, KY) are the two licensed bakeries behind every Girl Scout cookie in America. Both are owned by international parent companies — Weston Foods of Canada and Ferrero of Italy.
+                <strong>ABC Bakers</strong> (North Sioux City, SD) and <strong>Little Brownie Bakers</strong> (Louisville, KY) are the two licensed bakeries behind every Girl Scout cookie in America. ABC Bakers is owned by Hearthside Food Solutions, a U.S. company (which acquired it from Weston Foods Canada in 2021). Little Brownie Bakers is owned by Ferrero, an Italian company (which acquired it from Kellogg's in 2019).
               </p>
               <div class="flex items-center gap-4 mt-3">
                 <span class="font-body text-xs text-moss font-medium">~0.15 kg CO₂</span>
@@ -515,7 +532,7 @@
   </section>
 
   <!-- Explore -->
-  <section id="explore" class="py-24 px-6 bg-sagePale">
+  <section id="lineup" data-page="lineup" class="py-24 px-6 bg-sagePale">
     <div class="max-w-5xl mx-auto">
       <div class="max-w-2xl mb-12">
         <div class="editorial-line mb-6"></div>
@@ -667,7 +684,7 @@
   </section>
 
   <!-- Calculator -->
-  <section id="calculator" class="py-24 px-6">
+  <section id="calculator" data-page="calculator" class="py-24 px-6">
     <div class="max-w-4xl mx-auto">
       <div class="max-w-2xl mb-12">
         <div class="editorial-line mb-6"></div>
@@ -719,7 +736,7 @@
   </section>
 
   <!-- Why It Matters -->
-  <section id="why" class="py-24 px-6 bg-earth text-sand">
+  <section id="why" data-page="why" class="py-24 px-6 bg-earth text-sand">
     <div class="max-w-5xl mx-auto">
       <div class="max-w-2xl mb-16">
         <div class="w-16 h-0.5 bg-clay mb-6"></div>
@@ -737,7 +754,7 @@
         <div class="bg-earthLight/50 rounded-2xl p-8 border border-white/5">
           <p class="font-display font-900 text-5xl text-clay mb-4">Age 5</p>
           <h3 class="font-display font-600 text-xl mb-3">Labor & Human Rights</h3>
-          <p class="font-body text-sm text-sand/50 leading-relaxed">A Malaysian government report found kids as young as 5 working on palm oil plantations alongside their parents. Behind every ingredient is a real person.</p>
+          <p class="font-body text-sm text-sand/50 leading-relaxed">A 2018 Malaysian government survey found ~33,600 children ages 5–17 working on palm oil plantations — nearly half of them between 5 and 11. Behind every ingredient is a real person.</p>
         </div>
 
         <div class="bg-earthLight/50 rounded-2xl p-8 border border-white/5">
@@ -756,7 +773,7 @@
   </section>
 
   <!-- Olivia's Story -->
-  <section id="olivia" class="py-24 px-6">
+  <section id="olivia" data-page="olivia" class="py-24 px-6">
     <div class="max-w-3xl mx-auto">
       <div class="editorial-line mb-6"></div>
       <p class="font-body text-xs font-medium text-clay tracking-wider uppercase mb-4">The Emotional Centerpiece</p>
@@ -812,7 +829,7 @@
   </section>
 
   <!-- Quiz Section -->
-  <section id="quiz" class="py-24 px-6 bg-white">
+  <section id="quiz" data-page="quiz" class="py-24 px-6 bg-white">
     <div class="max-w-5xl mx-auto">
       <div class="max-w-2xl mb-12">
         <div class="editorial-line mb-6"></div>
@@ -895,7 +912,7 @@
   </section>
 
   <!-- Sources Section -->
-  <section id="sources" class="py-24 px-6">
+  <section id="sources" data-page="sources" class="py-24 px-6">
     <div class="max-w-5xl mx-auto">
       <div class="max-w-2xl mb-12">
         <div class="editorial-line mb-6"></div>
@@ -962,6 +979,57 @@
       </div>
     </div>
   </footer>
+
+  <!-- Page-switching script: simulates multi-page nav within a single mockup file -->
+  <script>
+    (function() {
+      const pages = document.querySelectorAll('[data-page]');
+      const navLinks = document.querySelectorAll('a[data-target]');
+
+      function showPage(pageId) {
+        // Show only the matching pages, hide the rest
+        pages.forEach(p => {
+          if (p.dataset.page === pageId) {
+            p.classList.remove('page-hidden');
+          } else {
+            p.classList.add('page-hidden');
+          }
+        });
+        // Update nav active state (only top nav links, not buttons in hero)
+        document.querySelectorAll('nav a[data-target]').forEach(link => {
+          if (link.dataset.target === pageId) {
+            link.classList.add('nav-active');
+          } else {
+            link.classList.remove('nav-active');
+          }
+        });
+        // Update URL hash without triggering reload
+        if (history.replaceState) {
+          history.replaceState(null, '', '#' + pageId);
+        }
+        // Scroll to top so the new page starts fresh
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+
+      // Wire up all click handlers
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          showPage(this.dataset.target);
+        });
+      });
+
+      // Handle back/forward browser buttons
+      window.addEventListener('hashchange', function() {
+        const pageId = window.location.hash.slice(1) || 'home';
+        showPage(pageId);
+      });
+
+      // Initial page based on URL hash, defaulting to home
+      const initialPage = window.location.hash.slice(1) || 'home';
+      showPage(initialPage);
+    })();
+  </script>
 
 </body>
 </html>
