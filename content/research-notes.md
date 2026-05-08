@@ -75,16 +75,17 @@ For each: source country, RSPO/certification status, processing location, shippi
 
 ## Priority 4 — Other 8 Cookies (→ `data/cookies/lineup.json`)
 
-For each: name, distinctive ingredients vs. Thin Mint, country count, rough carbon estimate, one-line "what makes this cookie's supply chain different" note.
+**Done.** [Full research is in `content/cookie-lineup-research.md`](cookie-lineup-research.md) — distinctive supply chain notes for each of the 8 non-Thin-Mint cookies, including a comparison table and quiz question seeds.
 
-- [ ] **Samoas / Caramel deLites** — coconut (Philippines? Sri Lanka?) is the new addition vs. Thin Mint. Caramel = corn syrup (US).
-- [ ] **Tagalongs / Peanut Butter Patties** — peanuts (US South — Georgia, Alabama). Cocoa coating same as Thin Mint.
-- [ ] **Do-si-dos / Peanut Butter Sandwich** — oats (US Midwest), peanut butter. Mostly domestic.
-- [ ] **Trefoils / Shortbread** — simplest. Flour, butter, sugar. Almost entirely US.
-- [ ] **Lemon-Ups / Lemonades** — lemon flavoring (Italy? US?). Citrus oil source.
-- [ ] **Toffee-tastic** — toffee, butter, gluten-free flour blend. Limited release.
-- [ ] **Adventurefuls** — caramel brownie, sea salt. Recent addition.
-- [ ] **Exploremores** — chocolate, marshmallow, almond crème. Almonds = California.
+Verified key facts:
+- [x] **Samoas / Caramel deLites**: coconut from Philippines/Indonesia/India (~72% of world coconut). 2024 prices spiked 73% due to El Niño.
+- [x] **Tagalongs / Peanut Butter Patties**: peanuts from US South — **Georgia produces ~42% of all US peanuts**.
+- [x] **Do-si-dos / Peanut Butter Sandwich**: oats from Upper Midwest — Minnesota, ND, SD, WI, IA. Mostly domestic supply chain.
+- [x] **Trefoils / Shortbread**: simplest cookie — flour, butter (US dairy), sugar, palm oil.
+- [x] **Lemon-Ups / Lemonades**: lemon oil from Sicily (86% of Italian lemons) or California/Florida; not publicly disclosed.
+- [x] **Toffee-tastic**: gluten-free blend = US rice flour + imported tapioca (Brazil/Thailand/Indonesia) + US sorghum.
+- [x] **Adventurefuls**: caramel + cocoa + sea salt; debuted 2022 season.
+- [x] **Exploremores**: almonds from California (80% of world supply), debuted 2026 season.
 
 ---
 
@@ -133,6 +134,14 @@ Build this *as you go.* Every fact you cite should have a source on this list.
 | Soybeans and Oil Crops at a Glance (USDA ERS) | [Page](https://www.ers.usda.gov/topics/crops/soybeans-and-oil-crops/oil-crops-sector-at-a-glance) | 2024 top soybean states: Illinois (record 688M bushels), Iowa, Indiana; Midwest = ~80% of US soybean acreage | 2026-05-03 |
 | Interbake Foods Upgrades Its North Sioux City Plant (Area Development) | [Article](https://www.areadevelopment.com/newsitems/11-13-2014/interbake-foods-production-facility-upgrade-north-sioux-city-south-dakota900135.shtml) | ABC Bakers / Interbake produces 100+ million boxes of Girl Scout cookies annually at North Sioux City, SD facility | 2026-05-03 |
 | Girl Scout cookie shortage at Louisville bakery (NBC News, 2023) | [Article](https://www.nbcnews.com/news/us-news/girl-scout-cookie-shortage-blamed-delays-louisville-kentucky-manufactu-rcna74379) | Little Brownie Bakers Louisville KY facility; LBB is the larger of the two cookie bakeries | 2026-05-03 |
+| List of countries by coconut production (Wikipedia) | [Article](https://en.wikipedia.org/wiki/List_of_countries_by_coconut_production) | Indonesia, Philippines, India = ~72% of world coconut. Philippines + Indonesia dominate coconut oil exports. | 2026-05-07 |
+| Georgia leads U.S. peanut production (USDA ERS) | [Chart](https://www.ers.usda.gov/data-products/charts-of-note/chart-detail?chartId=106192) | Georgia produces ~42% of all US peanuts; plus Alabama, Florida, NC, TX | 2026-05-07 |
+| 2024 California Almond Objective Measurement Report (USDA NASS) | [PDF](https://www.nass.usda.gov/Statistics_by_State/California/Publications/Specialty_and_Other_Releases/Almond/Objective-Measurement/2024almondOM.pdf) | California: 80%+ of world almond supply, 100% of US, 1.3M acres, 2.8B lbs in 2024 | 2026-05-07 |
+| Oats Production by State (USDA NASS) | [Page](https://www.nass.usda.gov/Charts_and_Maps/Crops_County/ot-pr.php) | US oat production led by MN, ND, SD, WI, IA — top 4 = >50% of US output | 2026-05-07 |
+| Lemon as a Natural Flavoring (The Flavorist) | [Article](https://www.flavorist.com/lemon-as-a-natural-flavoring-a-comprehensive-technical-guide/) | Lemon oil sources: Italy (86% from Sicily), Spain, USA (CA/FL), Argentina; cold-pressed from peel | 2026-05-07 |
+| US Corn Production by State (Crop Prophet) | [Article](https://www.cropprophet.com/us-corn-production-by-state/) | 2024 top corn states: Iowa (2.6B bu), Illinois (2.3B bu), Nebraska (1.6B bu); Corn Belt = ~60% of US corn | 2026-05-07 |
+| What State Makes Most of the Butter in the US (The Takeout) | [Article](https://www.thetakeout.com/1845374/state-makes-most-butter-us-california/) | California makes ~7× more butter than #2 Pennsylvania (51.6M lbs vs 6.8M lbs in 2024). California is also #1 milk producer (17.83B lbs in 2024) | 2026-05-07 |
+| USGS Salt Mineral Commodity Summary 2024 | [PDF](https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-salt.pdf) | US salt production: Louisiana 34%, Texas 17%, NY 15%, Kansas 7%, Utah 6%. Solar evaporation salt from Great Salt Lake & San Francisco Bay | 2026-05-07 |
 
 **Already-known sources to include:**
 - Open Supply Hub (opensupplyhub.org)

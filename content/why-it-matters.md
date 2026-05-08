@@ -2,7 +2,7 @@
 
 ## Environmental Impact
 
-Every cookie has a footprint, even if you don't see it. The palm oil in a box of Thin Mints comes from plantations in Indonesia and Malaysia, regions that hold some of the most diverse wildlife on the planet — and the oil itself crosses about 9,400 miles by cargo ship before it ever reaches a U.S. bakery. Cocoa from West Africa adds another ocean. Even the recycled paper boxes started out as trees. None of this is really hidden — it's just that most people don't think about it. Once you understand it, you can talk about it with anyone who asks.
+Every cookie has a footprint, even if you don't see it. The palm oil in a box of Thin Mints comes from plantations in Indonesia and Malaysia, regions that hold some of the most diverse wildlife on the planet — and the oil itself crosses about 9,500 miles by cargo ship before it ever reaches a U.S. bakery. Cocoa from West Africa adds another ocean. Even the recycled paper boxes started out as trees. None of this is really hidden — it's just that most people don't think about it. Once you understand it, you can talk about it with anyone who asks.
 
 ## Labor & Human Rights
 
@@ -10,7 +10,7 @@ Behind every ingredient is a person who helped grow or make it. Palm oil plantat
 
 ## Global Cooperation
 
-No single country grows everything that goes into a cookie. Palm oil from Malaysia, sugar from Brazil, cocoa from the Ivory Coast and Ghana, soybean oil from the US — a single Thin Mint is the result of dozens of countries working together. That's kind of amazing when you think about it. International agreements, certifications like RSPO and Rainforest Alliance, and watchdog nonprofits exist to keep everyone on the same page on labor, safety, and environmental standards. They all depend on one thing: people who care enough to understand how it works.
+No single country grows everything that goes into a cookie. Palm oil from Indonesia and Malaysia, cocoa from Ivory Coast and Ghana, sugar from US sugar beets in the Midwest, peppermint oil from Idaho, wheat from the Great Plains, soybean oil from Illinois — a single Thin Mint is the result of roughly 6 main countries working together, with two oceans crossed in between. That's kind of amazing when you think about it. International agreements, certifications like RSPO, and watchdog nonprofits exist to keep everyone on the same page on labor, safety, and environmental standards. They all depend on one thing: people who care enough to understand how it works.
 
 ## Consumer Power
 
